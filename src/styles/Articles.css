@@ -1,0 +1,13 @@
+ul {
+    list-style: none;
+}
+
+#articlesWrapper {
+    text-align: left;
+    padding-right:20px;
+}
+
+.articleListWarpper{
+    margin-bottom: 10px;
+
+}
