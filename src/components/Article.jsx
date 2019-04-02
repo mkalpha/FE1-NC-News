@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Router, Link } from '@reach/router'
+import Comments from '../components/Comments'
 
 class Article extends Component {
 
@@ -16,6 +18,9 @@ class Article extends Component {
                 Author: {this.state.article.author} Date Created: {this.state.article.created_at} Votes: {this.state.article.votes} Comments {this.state.article.comment_count}
             </div>
             </div>
+            <Router>
+                <Comments path="/"/>
+            </Router>
             </div>
         )
     }

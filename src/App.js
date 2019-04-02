@@ -14,7 +14,7 @@ class App extends Component {
         <Router>
             {/* <HomeView path="/"/> */}
             <Articles path="/"/>
-            <Article path ="articles/:article_id" />
+            <Article path ="articles/:article_id/*" />
         </Router>
       </div>
     );
