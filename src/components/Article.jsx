@@ -10,12 +10,15 @@ class Article extends Component {
     }
 
     render() {
-        return (this.state.article !== null && <div id ="articleCommentWrapper">
+        return (this.state.article !== null && <div id ="articleCommentWrapper"> 
+            {console.log(this.state.article)}
             <div id ="articleWrapper">
             <h2>{this.state.article.title}</h2>
             <p>{this.state.article.body}</p>
             <div>
-                Author: {this.state.article.author} Date Created: {this.state.article.created_at} Votes: {this.state.article.votes} Comments {this.state.article.comment_count}
+                Author: {this.state.article.author} Date Created: {this.state.article.created_at} Comments {this.state.article.comment_count} Votes: {this.state.article.votes}
+            <button value="1" onClick={this.patchArticleVotes}>Vote up</button> 
+            <button value="-1" onClick={this.patchArticleVotes}>vote down</button>
             </div>
             </div>
             <Router>
@@ -27,7 +30,7 @@ class Article extends Component {
 
     componentDidMount() {
         this.fetchSingleArticle()
-    }
+    } 
 
     fetchSingleArticle = () => {
         
@@ -35,6 +38,16 @@ class Article extends Component {
             .then(article => {
                 this.setState({ article : article.data.article[0] })
             })
+    }
+
+    patchArticleVotes = (event) => {
+        const patchBody = {
+            inc_votes : Number.parseInt(event.target.value, 0)
+        }
+        axios.patch(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`, patchBody)
+        .then(patchedArticle => {
+            this.setState({ article : patchedArticle.data.returnedArticle[0] })
+        })
     }
 
 

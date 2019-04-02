@@ -10,7 +10,6 @@ class Comments extends Component {
 
     render(){ 
         return (  this.state.comments !== null && <div>
-            {console.log(this.state.comments.articleComments[0])}
             <div id="commentsWrapper">
                 <ul>
                     {this.state.comments.articleComments.map(comment => {

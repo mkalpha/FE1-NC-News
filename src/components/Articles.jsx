@@ -17,9 +17,9 @@ class Articles extends Component {
     render() {
         return (this.state.articlesData !== null && <div id="articlesWrapper">
             Articles
-            <Router>
-                <SortTopicsForm updateToggleTopic={this.updateToggleTopic} updateSortBy={this.updateSortBy}  path= "/"/>
-            </Router>
+            
+            <SortTopicsForm updateToggleTopic={this.updateToggleTopic} updateSortBy={this.updateSortBy} />
+            
             <ul>
               {this.state.articlesData.map(article => {
                   return <li key={article.article_id}>
@@ -54,12 +54,12 @@ class Articles extends Component {
     }
 
     fetchArticles = () => {
-        if (this.state.topicToggle === null || this.state.topicToggle === 'all' && this.state.sortBy === null ) {
+        if (this.state.topicToggle === null || this.state.topicToggle === 'all') {
         axios.get('https://nc-knews-andrew-workman.herokuapp.com/api/articles')
         .then(articles  => {
             this.setState({articlesData : articles.data.articles})
         })
-    }else if (this.state.sortBy !== null){
+    }else if (this.state.sortBy !== null && this.state.topicToggle !== 'all'){
          axios.get(`https://nc-knews-andrew-workman.herokuapp.com/api/articles?topic=${this.state.topicToggle}&sortby=${this.state.sortBy}`)
         .then(articles  => {
             this.setState({articlesData : articles.data.articles})

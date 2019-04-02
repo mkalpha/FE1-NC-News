@@ -36,14 +36,12 @@ class SortTopicsForm extends Component {
                 })
     }
 
-    getTopicValue = () => {
-        const topicValue = document.getElementById("topicSelector").value;
-        this.props.updateToggleTopic(topicValue)
+    getTopicValue = (event) => {   
+        this.props.updateToggleTopic(event.target.value)
     }
 
-    getSortByValue = () => {
-        const sortValue = document.getElementById("orderBySelector").value;
-        this.props.updateSortBy(sortValue)
+    getSortByValue = (event) => {
+        this.props.updateSortBy(event.target.value)
     }
 }
 
