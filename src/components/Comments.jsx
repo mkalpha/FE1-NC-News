@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Router, Link } from '@reach/router'
+import { Router, Link } from '@reach/router';
+import '../styles/Comments.css';
 
 class Comments extends Component {
     state ={

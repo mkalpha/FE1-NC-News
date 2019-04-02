@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Link } from '@reach/router'
 import axios from 'axios';
-import Article from '../components/Article'
+import SortTopicsForm from '../components/SortTopicsForm';
 import '../styles/Articles.css'
 
 
@@ -9,16 +9,19 @@ import '../styles/Articles.css'
 
 class Articles extends Component {
     state ={
-        articlesData : null
+        articlesData : null,
+        topicToggle : null
     }
 
     render() {
         return (this.state.articlesData !== null && <div id="articlesWrapper">
             Articles
-            <div>Sort by goes here</div>
+            <Router>
+                <SortTopicsForm updateToggleTopic={this.updateToggleTopic} path= "/"/>
+            </Router>
             <ul>
               {this.state.articlesData.map(article => {
-                  return <li>
+                  return <li key={article.article_id}>
                             <div className="articleListWarpper">
                                 <div className="articleListTitle"><Link to={`/articles/${article.article_id}`}><b>Title: </b>{article.title}</Link></div>
                                 <div className="articleListTopic"><b>Topic: </b>{article.topic}</div>
@@ -42,11 +45,29 @@ class Articles extends Component {
         this.fetchArticles();
     }
 
+    componentDidUpdate(_, prevState){
+        if (this.state.topicToggle !== prevState.topicToggle) {
+            this.fetchArticles()
+        }
+
+    }
+
     fetchArticles = () => {
+        if (this.state.topicToggle === null || this.state.topicToggle === 'all') {
         axios.get('https://nc-knews-andrew-workman.herokuapp.com/api/articles')
         .then(articles  => {
             this.setState({articlesData : articles.data.articles})
         })
+    } else {
+        axios.get(`https://nc-knews-andrew-workman.herokuapp.com/api/articles?topic=${this.state.topicToggle}`)
+        .then(articles  => {
+            this.setState({articlesData : articles.data.articles})
+        })
+    }
+    }
+
+    updateToggleTopic = (topic) => {
+        this.setState({ topicToggle : topic })
     }
 
 
