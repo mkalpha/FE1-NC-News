@@ -8,10 +8,7 @@
 
 4. sort out the date formatting on articles and comments
 
-
-
-
-# Check with Paul 
+## Check with Paul 
 
 1. in both Nav with the appearing form and Article with the votes I am not calling componentDidUpdate, am I causing more rendering than I need to 
 

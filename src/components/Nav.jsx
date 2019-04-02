@@ -13,7 +13,16 @@ class Nav extends Component {
                     <button onClick={this.handleClick}>Post New Article</button>
             </div>
             {this.state.showAddArticle !== false &&<form>
-                <h1>Add New Article</h1>
+                <form>
+                    <input type="text"></input>
+                    <textarea></textarea>
+                    <select onChange={this.getSortByValue} id="orderBySelector">
+                        <option value="football">Football</option>
+                        <option value="cooking">Cooking</option>
+                        <option value="coding">Coding</option>
+                    </select>
+                </form>
+                <button>Submit Article</button>
             </form>}
             </div> 
               
