@@ -8,7 +8,7 @@ class HomeView extends Component {
     render() {
         return (<div id="contentWrapper">
             
-                <Articles />
+                <Articles path="/articles/*" />
             
             </div>)
     }

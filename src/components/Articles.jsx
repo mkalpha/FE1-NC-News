@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Router, Link } from '@reach/router'
 import axios from 'axios';
+import Article from '../components/Article'
 import '../styles/Articles.css'
+
 
 
 
@@ -18,7 +20,7 @@ class Articles extends Component {
               {this.state.articlesData.map(article => {
                   return <li>
                             <div className="articleListWarpper">
-                                <div className="articleListTitle"><b>Title: </b>{article.title}</div>
+                                <div className="articleListTitle"><Link to={`/articles/${article.article_id}`}><b>Title: </b>{article.title}</Link></div>
                                 <div className="articleListTopic"><b>Topic: </b>{article.topic}</div>
                                 <div className="articleListAuthor"><b>Author: </b>{article.author}</div>
                                 <div className="articleListCommentCount">Comments: {article.comment_count}</div>
@@ -28,7 +30,11 @@ class Articles extends Component {
                         </li>
               })}
             </ul>
+             <Article path =":article_id" />
+            
             </div>
+
+            
         )
     }
 
