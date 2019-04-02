@@ -10,14 +10,15 @@ import '../styles/Articles.css'
 class Articles extends Component {
     state ={
         articlesData : null,
-        topicToggle : null
+        topicToggle : null,
+        sortBy : null
     }
 
     render() {
         return (this.state.articlesData !== null && <div id="articlesWrapper">
             Articles
             <Router>
-                <SortTopicsForm updateToggleTopic={this.updateToggleTopic} path= "/"/>
+                <SortTopicsForm updateToggleTopic={this.updateToggleTopic} updateSortBy={this.updateSortBy}  path= "/"/>
             </Router>
             <ul>
               {this.state.articlesData.map(article => {
@@ -46,15 +47,20 @@ class Articles extends Component {
     }
 
     componentDidUpdate(_, prevState){
-        if (this.state.topicToggle !== prevState.topicToggle) {
+        if (this.state.topicToggle !== prevState.topicToggle || this.state.sortBy !== prevState.sortBy) {
             this.fetchArticles()
         }
 
     }
 
     fetchArticles = () => {
-        if (this.state.topicToggle === null || this.state.topicToggle === 'all') {
+        if (this.state.topicToggle === null || this.state.topicToggle === 'all' && this.state.sortBy === null ) {
         axios.get('https://nc-knews-andrew-workman.herokuapp.com/api/articles')
+        .then(articles  => {
+            this.setState({articlesData : articles.data.articles})
+        })
+    }else if (this.state.sortBy !== null){
+         axios.get(`https://nc-knews-andrew-workman.herokuapp.com/api/articles?topic=${this.state.topicToggle}&sortby=${this.state.sortBy}`)
         .then(articles  => {
             this.setState({articlesData : articles.data.articles})
         })
@@ -68,6 +74,10 @@ class Articles extends Component {
 
     updateToggleTopic = (topic) => {
         this.setState({ topicToggle : topic })
+    }
+
+    updateSortBy = (sortBy) => {
+        this.setState({ sortBy : sortBy})
     }
 
 

@@ -9,11 +9,17 @@ class SortTopicsForm extends Component {
 
     render() {
         return( this.state.topicsList !== null && <div>
-            <select onChange={this.getSubmitValue} id="topicSelector">
+            <select onChange={this.getTopicValue} id="topicSelector">
                 <option value="all">all</option>
                 {this.state.topicsList.topics.map(topic => {
                    return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
                 })}
+            </select>
+
+            <select onChange={this.getSortByValue} id="orderBySelector">
+                <option value="created_at">Date Created</option>
+                <option value="comment_count">Comment Count</option>
+                <option value="votes">votes</option>
             </select>
         </div>
         )
@@ -30,9 +36,14 @@ class SortTopicsForm extends Component {
                 })
     }
 
-    getSubmitValue = () => {
-        const value = document.getElementById("topicSelector").value;
-        this.props.updateToggleTopic(value)
+    getTopicValue = () => {
+        const topicValue = document.getElementById("topicSelector").value;
+        this.props.updateToggleTopic(topicValue)
+    }
+
+    getSortByValue = () => {
+        const sortValue = document.getElementById("orderBySelector").value;
+        this.props.updateSortBy(sortValue)
     }
 }
 
