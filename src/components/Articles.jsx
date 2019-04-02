@@ -30,7 +30,7 @@ class Articles extends Component {
                         </li>
               })}
             </ul>
-             <Article path =":article_id" />
+             
             
             </div>
 

@@ -30,10 +30,9 @@ class Article extends Component {
     }
 
     fetchSingleArticle = () => {
-        console.log(this.props.article_id)
+        
         axios.get(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`)
             .then(article => {
-                console.log(article.data.article[0])
                 this.setState({ article : article.data.article[0] })
             })
     }
