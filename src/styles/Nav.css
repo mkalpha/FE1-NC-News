@@ -2,3 +2,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+#nav {
+    position:sticky;
+    top: 0;
+    background-color: #f6f6f6;
+}
