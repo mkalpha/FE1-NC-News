@@ -25,8 +25,6 @@
 
 3. Am I using too many class based components?
 
-4. How to force a re-render after naviage()
-
 
 ## Bug list
 

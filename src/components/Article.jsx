@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Router, Link } from '@reach/router'
+import { Router, navigate } from '@reach/router'
 import Comments from '../components/Comments'
 
 class Article extends Component {
@@ -18,6 +18,7 @@ class Article extends Component {
                 Author: {this.state.article.author} Date Created: {this.state.article.created_at} Comments {this.state.article.comment_count} Votes: {this.state.article.votes}
             <button value="1" onClick={this.patchArticleVotes}>Vote up</button> 
             <button value="-1" onClick={this.patchArticleVotes}>vote down</button>
+            <button onClick={this.deleteArticle}>Delete Article</button>
             </div>
             </div>
             <Router>
@@ -32,9 +33,7 @@ class Article extends Component {
     } 
 
     componentDidUpdate(prevProps, prevState) {
-       console.log(prevProps)
-        console.log(this.props.article_id)
-        if (prevProps !== this.props) {
+       if (prevProps !== this.props) {
             this.fetchSingleArticle()
         } 
     }
@@ -55,6 +54,14 @@ class Article extends Component {
         .then(patchedArticle => {
             this.setState({ article : patchedArticle.data.returnedArticle[0] })
         })
+    }
+
+    deleteArticle =  (event) => {
+        event.preventDefault();
+        axios.delete(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`)
+            .then(() => {
+                navigate('/')
+            }).catch(err => console.log(err))
     }
 
 

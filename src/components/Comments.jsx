@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Router, Link } from '@reach/router';
+import Comment from '../components/Comment'
 import '../styles/Comments.css';
 
 class Comments extends Component {
@@ -14,11 +15,7 @@ class Comments extends Component {
                 <ul>
                     {this.state.comments.articleComments.map(comment => {
                         return <li key={comment.comment_id}>
-                            <div className="commentWrapper">
-                                <div className="commentauthor">{comment.author}</div>
-                                <div className="commentbody">{comment.body}</div>
-                                <div className="commentMetaData">Date Posted: {comment.created_at} Votes: {comment.votes}</div>
-                            </div>
+                                    <Comment comment={comment} />
                                 </li>
                     })}
                 </ul>
