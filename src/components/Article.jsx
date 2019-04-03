@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Router, navigate } from '@reach/router'
 import Comments from '../components/Comments'
+import AddComment from '../components/AddComment'
 
 class Article extends Component {
 
@@ -20,7 +21,7 @@ class Article extends Component {
             <button value="-1" onClick={this.patchArticleVotes}>vote down</button>
             <button onClick={this.deleteArticle}>Delete Article</button>
             </div>
-            
+            <AddComment />
             </div>
             <Router>
                 <Comments path="/" article_id={this.state.article_id}/>
