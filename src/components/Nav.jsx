@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from '@reach/router'
+import { Link, navigate } from '@reach/router'
 import axios from 'axios';
 import '../styles/Nav.css'
 
@@ -53,8 +53,9 @@ class Nav extends Component {
             author: 'weegembump',
           };
         axios.post('https://nc-knews-andrew-workman.herokuapp.com/api/articles', articleToPost)
-                .then((res) => {
-                    console.log(res)
+                .then((newArticle) => {
+                    const newArticleId = newArticle.data.newArticle[0].article_id
+                    navigate(`/articles/${newArticleId}`,)
                 })
     }
 }

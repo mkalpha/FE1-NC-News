@@ -10,7 +10,7 @@ class Article extends Component {
     }
 
     render() {
-        return (this.state.article !== null && <div id ="articleCommentWrapper"> 
+       return (this.state.article !== null && <div id ="articleCommentWrapper"> 
             <div id ="articleWrapper">
             <h2>{this.state.article.title}</h2>
             <p>{this.state.article.body}</p>
@@ -30,6 +30,14 @@ class Article extends Component {
     componentDidMount() {
         this.fetchSingleArticle()
     } 
+
+    componentDidUpdate(prevProps, prevState) {
+       console.log(prevProps)
+        console.log(this.props.article_id)
+        if (prevProps !== this.props) {
+            this.fetchSingleArticle()
+        } 
+    }
 
     fetchSingleArticle = () => {
         

@@ -2,7 +2,7 @@
 
 1. extract axios request to a separate api.js file 
 
-2. fix sort by bug with utils function and testing - SortTopicsForm.jsx
+
 
 3. extract votes Patch to a utils function as I will be using it again in comments
 
@@ -12,7 +12,10 @@
 
 6. rename SortTopicsForm
 
-5. Finish add new Article form
+5. Move Post article from Nav into its own component 
+
+6. Login in will be in the same position as post article form
+
 
 ## Check with Paul 
 
@@ -21,3 +24,12 @@
 2. Am I over compartmentalising things? 
 
 3. Am I using too many class based components?
+
+4. How to force a re-render after naviage()
+
+
+## Bug list
+
+2. fix sort by bug with utils function and testing - SortTopicsForm.jsx
+
+3. adding text to post then deleting doesn't remove from state in add article form 
