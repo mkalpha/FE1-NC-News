@@ -11,6 +11,7 @@ class Article extends Component {
     }
 
     render() {
+        // {console.log()}
        return (this.state.article !== null && <div id ="articleCommentWrapper"> 
             <div id ="articleWrapper">
             <h2>{this.state.article.title}</h2>
@@ -21,7 +22,7 @@ class Article extends Component {
             <button value="-1" onClick={this.patchArticleVotes}>vote down</button>
             <button onClick={this.deleteArticle}>Delete Article</button>
             </div>
-            <AddComment />
+            <AddComment article_id={this.state.article.article_id} />
             </div>
             <Router>
                 <Comments path="/" article_id={this.state.article_id}/>
@@ -35,7 +36,6 @@ class Article extends Component {
     } 
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('Inside componentDidUpdate')
        if (prevProps !== this.props) {
             this.fetchSingleArticle()
         } 

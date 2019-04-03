@@ -16,7 +16,7 @@
 
 6. Login in will be in the same position as post article form
 
-7. Comment component doesn't need to be a class
+7. Soooo much refactoring :(
 
 
 ## Check with Paul 
