@@ -12,11 +12,11 @@ class Nav extends Component {
     }
     render() {
     return (<div id="nav"><div id="navWrapper">
-                    <div id ="logo"><Link to={'/'}>NC_News</Link></div>
-                    <div id="login">Login</div>
-                    <button onClick={this.handleClick}>Post New Article</button>
+                    <div id ="logo"><b><Link to={'/'}>NC NEWS</Link></b></div>
+                    <div id="login"><i class="fas fa-user-alt"></i> Login</div>
+                    <button className="navButton" onClick={this.handleClick}><b>Post New Article</b></button>
             </div>
-            {this.state.showAddArticle !== false &&<form onSubmit={this.handleSubmit}>
+            {this.state.showAddArticle !== false &&<form id="postArticleForm" onSubmit={this.handleSubmit}>
                     Article Title: <input type="text" onChange={this.handleChange} value={this.state.articleTitle} name="articleTitle"></input>
                     Article Body<textarea onChange={this.handleChange} value={this.state.articleBody} name="articleBody"></textarea>
                     Select Topic
@@ -55,6 +55,10 @@ class Nav extends Component {
         axios.post('https://nc-knews-andrew-workman.herokuapp.com/api/articles', articleToPost)
                 .then((newArticle) => {
                     const newArticleId = newArticle.data.newArticle[0].article_id
+                    this.setState({ showAddArticle : false,
+                        articleTitle : '',
+                        articleBody : '',
+                        topic: 'football'})
                     navigate(`/articles/${newArticleId}`,)
                 })
     }
