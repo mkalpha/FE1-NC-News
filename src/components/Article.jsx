@@ -20,9 +20,10 @@ class Article extends Component {
             <button value="-1" onClick={this.patchArticleVotes}>vote down</button>
             <button onClick={this.deleteArticle}>Delete Article</button>
             </div>
+            
             </div>
             <Router>
-                <Comments path="/"/>
+                <Comments path="/" article_id={this.state.article_id}/>
             </Router>
             </div>
         )
@@ -33,6 +34,7 @@ class Article extends Component {
     } 
 
     componentDidUpdate(prevProps, prevState) {
+        console.log('Inside componentDidUpdate')
        if (prevProps !== this.props) {
             this.fetchSingleArticle()
         } 

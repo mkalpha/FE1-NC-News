@@ -10,12 +10,13 @@ class Comments extends Component {
     }
 
     render(){ 
+       
         return (  this.state.comments !== null && <div>
             <div id="commentsWrapper">
                 <ul>
                     {this.state.comments.articleComments.map(comment => {
                         return <li key={comment.comment_id}>
-                                    <Comment comment={comment} />
+                                    <Comment comment={comment} article_id={this.props.article_id}/>
                                 </li>
                     })}
                 </ul>
@@ -26,6 +27,12 @@ class Comments extends Component {
 
     componentDidMount() {
         this.fetchComments()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps !== this.props) {
+            this.fetchComments()
+        } 
     }
 
     fetchComments = () => {

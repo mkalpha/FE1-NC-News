@@ -16,6 +16,8 @@
 
 6. Login in will be in the same position as post article form
 
+7. Comment component doesn't need to be a class
+
 
 ## Check with Paul 
 
@@ -31,3 +33,5 @@
 2. fix sort by bug with utils function and testing - SortTopicsForm.jsx
 
 3. adding text to post then deleting doesn't remove from state in add article form 
+
+4. When deleteing comments if you delete the only comment it won't disapear - this is porably because i am trying to map on nothing at this point - i need to tidy up the map functions across the app
