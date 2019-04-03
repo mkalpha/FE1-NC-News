@@ -11,7 +11,6 @@ class Article extends Component {
 
     render() {
         return (this.state.article !== null && <div id ="articleCommentWrapper"> 
-            {console.log(this.state.article)}
             <div id ="articleWrapper">
             <h2>{this.state.article.title}</h2>
             <p>{this.state.article.body}</p>
