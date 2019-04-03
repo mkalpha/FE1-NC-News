@@ -46,6 +46,16 @@ class Nav extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        const articleToPost = {
+            title: this.state.articleTitle,
+            body: this.state.articleBody,
+            topic: this.state.topic,
+            author: 'weegembump',
+          };
+        axios.post('https://nc-knews-andrew-workman.herokuapp.com/api/articles', articleToPost)
+                .then((res) => {
+                    console.log(res)
+                })
     }
 }
 
