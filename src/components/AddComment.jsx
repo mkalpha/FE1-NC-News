@@ -42,7 +42,6 @@ class AddComment extends Component {
                 this.setState({commentBody : '', seeAddComment : false})
                  navigate(`/articles/${this.props.article_id}`)
             })
-            .catch(err => console.log(err))
 
     }
 }

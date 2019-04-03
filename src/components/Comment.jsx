@@ -6,11 +6,14 @@ class Comment extends Component {
 
     state = {}
 
-    render(){        
+    render(){
+       
         return (<div className="commentWrapper">
         <div className="commentauthor">{this.props.comment.author}</div>
         <div className="commentbody">{this.props.comment.body}</div>
-        <div className="commentMetaData">Date Posted: {this.props.comment.created_at} Votes: {this.props.comment.votes}
+        <div className="commentMetaData">Date Posted: {this.props.comment.created_at} Votes: {this.props.comment.votes}             
+            <button value="1" onClick={this.patchCommentVotes}>Vote up</button> 
+            <button value="-1" onClick={this.patchCommentVotes}>vote down</button>
         <button onClick={this.deleteComment}>Delete comment</button></div>
         </div>
         )   
@@ -22,7 +25,16 @@ class Comment extends Component {
         .then((res) => {
             navigate(`/articles/${this.props.article_id}`)
         })
+    }
 
+    patchCommentVotes = (event) => {
+        const patchVotesBody = {
+            inc_votes : Number.parseInt(event.target.value, 0)
+        }
+        axios.patch(`https://nc-knews-andrew-workman.herokuapp.com/api/comments/${this.props.comment.comment_id}`, patchVotesBody)
+            .then((res) => {
+                navigate(`/articles/${this.props.article_id}`)
+            })
     }
 
 }
