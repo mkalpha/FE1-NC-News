@@ -44,7 +44,6 @@ class Nav extends Component {
 
     handleChange = (event) => {
         event.preventDefault()
-        console.log(event.target.value)
         if(event.target.value === 'addNewTopic') this.setState({addNewTopic : true})
         const { value, name } = event.target
         this.setState({ [name] : value })  
