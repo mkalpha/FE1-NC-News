@@ -2,7 +2,7 @@
 
 1. extract axios request to a separate api.js file 
 
-
+2. Nav is a mess need to extract stuff out to new components
 
 3. extract votes Patch to a utils function as I will be using it again in comments
 
@@ -14,18 +14,11 @@
 
 5. Move Post article from Nav into its own component 
 
-
 7. Soooo much refactoring :(
 
+8. I am holding topicList in state in two different places, this is not good, i am going to have to move topicsList to state in app and perform insane props surgery on everything
 
-## Check with Paul 
-
-1. in both Nav with the appearing form and Article with the votes I am not calling componentDidUpdate, am I causing more rendering than I need to - Also there is a delay with the votes sometimes (usually on the first click)? event.preventDefaut()???
-
-2. Am I over compartmentalising things? 
-
-3. Am I using too many class based components?
-
+9. Login functionality
 
 ## Bug list
 
@@ -36,3 +29,5 @@
 4. When deleteing comments if you delete the only comment it won't disapear - this is porably because i am trying to map on nothing at this point - i need to tidy up the map functions across the app
 
 5. Voting down on a comment clear the articles comment count for some reason
+
+6. after creating a new topic you cannot post an article to that topic straight away

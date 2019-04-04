@@ -7,16 +7,25 @@ import Article from './components/Article'
 
 class App extends Component {
 
+  state = {
+    user : null
+  }
+
   render() {
+    {console.log(this.state.user)}
     return (
       <div className="App">
-        <Nav />
+        <Nav logInUser={this.logInUser} user={this.state.user} />
         <Router>
             <Articles path="/" />
             <Article path ="articles/:article_id/*" />
         </Router>
       </div>
     );
+  }
+
+  logInUser = () => {
+    this.state.user === null ? this.setState({ user : 'weegembump'}) : this.setState({ user : null})       
   }
 
 }
