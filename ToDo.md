@@ -14,7 +14,6 @@
 
 5. Move Post article from Nav into its own component 
 
-6. Login in will be in the same position as post article form
 
 7. Soooo much refactoring :(
 
