@@ -18,8 +18,8 @@ class Nav extends Component {
     render() {
     return (<div id="nav"><div id="navWrapper"> 
                     <div id ="logo"><b><Link to={'/'}>NC NEWS</Link></b></div>
-                    <LogIn user={this.props.user} logInUser={this.props.logInUser} />
-                    <button className="navButton" onClick={this.handleClick}><b>Post New Article</b></button>
+                    <LogIn user={this.props.user} logInUser={this.props.logInUser} hideNewArticle={this.hideNewArticle} />
+                    {this.props.user !== null && <button className="navButton" onClick={this.handleClick}><b>Post New Article</b></button>}
             </div>
             
             {this.state.showAddArticle !== false || this.state.addNewTopic !== true &&<form id="postArticleForm" onSubmit={this.handleSubmit}>
@@ -58,7 +58,11 @@ class Nav extends Component {
 
     handleClick = (event) => {
         event.preventDefault()
-       this.state.showAddArticle === false ? this.setState({ showAddArticle : true}) : this.setState({ showAddArticle : false}) 
+        this.state.showAddArticle === false ? this.setState({ showAddArticle : true}) : this.setState({ showAddArticle : false}) 
+    }
+
+    hideNewArticle = () => {
+        this.setState({showAddArticle : true})
     }
 
     handleChange = (event) => {
@@ -78,7 +82,7 @@ class Nav extends Component {
             title: this.state.articleTitle,
             body: this.state.articleBody,
             topic: this.state.topic,
-            author: 'weegembump',
+            author: this.props.user,
           };
         axios.post('https://nc-knews-andrew-workman.herokuapp.com/api/articles', articleToPost)
                 .then((newArticle) => {

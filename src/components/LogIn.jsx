@@ -12,6 +12,7 @@ class LogIn extends Component {
     handleClick = (event) => {
         event.preventDefault()
         this.props.logInUser()
+        this.props.hideNewArticle()
     }
 }
 
