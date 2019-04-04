@@ -3,6 +3,7 @@ import { Link, navigate } from '@reach/router'
 import axios from 'axios';
 import '../styles/Nav.css'
 import AddNewTopic from '../components/AddNewTopic'
+import TopicSelector from '../components/TopicSelector'
 
 class Nav extends Component {
     state = {
@@ -30,7 +31,7 @@ class Nav extends Component {
                     </select>
                 <button>Submit Article</button>
             </form>}
-            {this.state.addNewTopic !== false && <AddNewTopic />}
+            {this.state.addNewTopic !== false && <AddNewTopic viewTopic={this.viewTopic} />}
             </div> 
               
             
@@ -44,9 +45,13 @@ class Nav extends Component {
 
     handleChange = (event) => {
         event.preventDefault()
-        if(event.target.value === 'addNewTopic') this.setState({addNewTopic : true})
+        if(event.target.value === 'addNewTopic') this.viewTopic()
         const { value, name } = event.target
         this.setState({ [name] : value })  
+    }
+
+    viewTopic = () => {
+        this.state.addNewTopic === true ? this.setState({ addNewTopic : false }) : this.setState({ addNewTopic : true })
     }
 
     handleSubmit = (event) => {

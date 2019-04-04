@@ -71,7 +71,7 @@ class Articles extends Component {
         })
     }
     }
-
+   
     updateToggleTopic = (topic) => {
         this.setState({ topicToggle : topic })
     }

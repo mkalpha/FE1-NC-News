@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Navigate, navigate } from '@reach/router'
 import '../styles/AddNewTopic.css'
 
 class AddNewTopic extends Component {
@@ -23,7 +24,6 @@ class AddNewTopic extends Component {
      }
 
      handleChange = (event) => {
-         console.log(event.target.value)
         event.preventDefault()
         const { value, name } = event.target
         this.setState({ [name] : value })  
@@ -37,7 +37,9 @@ class AddNewTopic extends Component {
           };
           axios.post('https://nc-knews-andrew-workman.herokuapp.com/api/topics', topicToPost)
             .then((res) => {
-                console.log(res.body)
+                console.log(res)
+                this.props.viewTopic()
+                navigate('/')
             })
      }
 }

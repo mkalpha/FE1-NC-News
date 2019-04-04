@@ -35,7 +35,7 @@ class SortTopicsForm extends Component {
                    this.setState({ topicsList : topics.data})
                 })
     }
-
+   
     getTopicValue = (event) => {   
         this.props.updateToggleTopic(event.target.value)
     }
