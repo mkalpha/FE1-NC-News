@@ -35,3 +35,5 @@
 3. adding text to post then deleting doesn't remove from state in add article form 
 
 4. When deleteing comments if you delete the only comment it won't disapear - this is porably because i am trying to map on nothing at this point - i need to tidy up the map functions across the app
+
+5. Voting down on a comment clear the articles comment count for some reason
