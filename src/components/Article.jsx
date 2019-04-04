@@ -16,17 +16,16 @@ class Article extends Component {
             <div id ="articleWrapper">
             <h2>{this.state.article.title}</h2>
             <p>{this.state.article.body}</p>
-            {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/owsfdh4gxyc" frameborder="0" allowfullscreen></iframe> */}
             <div>
                 Author: {this.state.article.author} Date Created: {this.state.article.created_at} Comments {this.state.article.comment_count} Votes: {this.state.article.votes}
-            <button value="1" onClick={this.patchArticleVotes}>Vote up</button> 
-            <button value="-1" onClick={this.patchArticleVotes}>vote down</button>
-            <button onClick={this.deleteArticle}>Delete Article</button>
+            {this.state.article.author !== this.props.user && <button value="1" onClick={this.patchArticleVotes}>Vote up</button>}
+            {this.state.article.author !== this.props.user && <button value="-1" onClick={this.patchArticleVotes}>vote down</button>}
+            {this.state.article.author === this.props.user && <button onClick={this.deleteArticle}>Delete Article</button>}
             </div>
             <AddComment article_id={this.state.article.article_id} />
             </div>
             <Router>
-                <Comments path="/" article_id={this.state.article_id}/>
+                <Comments path="/" article_id={this.state.article_id} user={this.props.user}/>
             </Router>
             </div>
         )

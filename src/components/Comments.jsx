@@ -16,7 +16,7 @@ class Comments extends Component {
                 <ul>
                     {this.state.comments.articleComments.map(comment => {
                         return <li key={comment.comment_id}>
-                                    <Comment comment={comment} article_id={this.props.article_id}/>
+                                    <Comment comment={comment} article_id={this.props.article_id} user={this.props.user}/>
                                 </li>
                     })}
                 </ul>

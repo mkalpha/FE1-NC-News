@@ -21,17 +21,22 @@ class Nav extends Component {
                     <LogIn user={this.props.user} logInUser={this.props.logInUser} />
                     <button className="navButton" onClick={this.handleClick}><b>Post New Article</b></button>
             </div>
+            
             {this.state.showAddArticle !== false || this.state.addNewTopic !== true &&<form id="postArticleForm" onSubmit={this.handleSubmit}>
                     Article Title: <input type="text" onChange={this.handleChange} value={this.state.articleTitle} name="articleTitle"></input>
                     Article Body<textarea onChange={this.handleChange} value={this.state.articleBody} name="articleBody"></textarea>
+                    
                     Select Topic
                     <select onChange={this.handleChange} id="orderBySelector" name ="topic">
                     {this.state.topicsList !== null && this.state.topicsList.topics.map(topic => {
                    return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
                     })}
                         <option value="addNewTopic">Add New Topic</option>
+
                     </select>
+               
                 <button>Submit Article</button>
+           
             </form>}
             {this.state.addNewTopic !== false && <AddNewTopic viewTopic={this.viewTopic} />}
             </div> 

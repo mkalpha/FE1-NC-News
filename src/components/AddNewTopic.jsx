@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Navigate, navigate } from '@reach/router'
+import { navigate } from '@reach/router'
 import '../styles/AddNewTopic.css'
 
 class AddNewTopic extends Component {
@@ -20,7 +20,6 @@ class AddNewTopic extends Component {
                     <button>Cancel</button>
         
                 </div>)
-        
      }
 
      handleChange = (event) => {

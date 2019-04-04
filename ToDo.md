@@ -14,7 +14,7 @@
 
 5. Move Post article from Nav into its own component 
 
-7. Soooo much refactoring :(
+
 
 8. I am holding topicList in state in two different places, this is not good, i am going to have to move topicsList to state in app and perform insane props surgery on everything
 
@@ -26,7 +26,7 @@
 
 3. adding text to post then deleting doesn't remove from state in add article form 
 
-4. When deleteing comments if you delete the only comment it won't disapear - this is porably because i am trying to map on nothing at this point - i need to tidy up the map functions across the app
+4. When deleteing comments if you delete the only comment it won't disapear - this is probably because i am trying to map on nothing at this point - i need to tidy up the map functions across the app
 
 5. Voting down on a comment clear the articles comment count for some reason
 
