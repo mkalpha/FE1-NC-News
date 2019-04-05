@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { postComment } from '../api'
 import { navigate } from '@reach/router'
 
 class AddComment extends Component {
@@ -37,11 +38,10 @@ class AddComment extends Component {
             body : this.state.commentBody,
             username : this.state.username
         };
-        axios.post(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}/comments`, commentToPost)
-            .then((res)=> {
-                this.setState({commentBody : '', seeAddComment : false})
-                 navigate(`/articles/${this.props.article_id}`)
-            })
+        postComment(commentToPost, this.props.article_id).then((responce) => {
+            this.setState({commentBody : '', seeAddComment : false})
+            navigate(`/articles/${this.props.article_id}`)
+        })
 
     }
 }

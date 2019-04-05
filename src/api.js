@@ -25,3 +25,9 @@ export const fetchArticles = async (topic, sortby) => {
    .catch(err => err)
     return  articles
 }
+
+export const postComment = async (commentToPost, article_id) => {
+    const responce = await axios.post(`${BASE_URL}/articles/${article_id}/comments`, commentToPost)
+                                .catch(err => err)
+                                return responce
+}

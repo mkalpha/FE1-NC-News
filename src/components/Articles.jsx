@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router'
-import axios from 'axios';
 import SortTopicsForm from '../components/SortTopicsForm';
 import '../styles/Articles.css';
 import { fetchArticles } from '../api';
