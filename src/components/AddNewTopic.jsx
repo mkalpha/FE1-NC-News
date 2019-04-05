@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router'
 import '../styles/AddNewTopic.css'
-// import fetchAllTopics from '../src/api'
+import { postNewTopic } from '../api'
 
 class AddNewTopic extends Component {
     state = {
@@ -35,12 +35,11 @@ class AddNewTopic extends Component {
             slug: this.state.topicName,
             description: this.state.topicDescription
           };
-          axios.post('https://nc-knews-andrew-workman.herokuapp.com/api/topics', topicToPost)
-            .then((res) => {
+          postNewTopic(topicToPost).then((responce) => {
                 this.props.updateTopic(this.state.topicName)
                 this.props.viewTopic()
                 this.props.fetchAllTopics()
-            })
+          })
      }
 }
 

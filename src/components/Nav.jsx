@@ -71,7 +71,6 @@ class Nav extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state.topic)
         const articleToPost = {
             title: this.state.articleTitle,
             body: this.state.articleBody,

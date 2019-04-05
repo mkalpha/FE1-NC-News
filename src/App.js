@@ -4,7 +4,7 @@ import { Router } from '@reach/router'
 import Nav from './components/Nav';
 import Articles from './components/Articles'
 import Article from './components/Article'
-import getAllTopics from '../src/api'
+import { getAllTopics } from '../src/api'
 
 class App extends Component {
 
@@ -31,14 +31,12 @@ class App extends Component {
 
   componentDidMount() {
     getAllTopics().then((topics) => {
-      console.log(topics)
       this.setState( {topicsList : topics} )
    })
   }
 
 fetchAllTopics = () => {
      getAllTopics().then((topics) => {
-      console.log(topics)
       this.setState( {topicsList : topics} )
    })
   }
