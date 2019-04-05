@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Router, navigate } from '@reach/router'
 import Comments from '../components/Comments'
-import AddComment from '../components/AddComment'
+import AddComment from '../components/AddComment';
+import { updateArticleVotes } from '../api';
 
 class Article extends Component {
 
     state = {
-        article : null
+        article : null,
+        voteChange : 0,
     }
 
     render() {

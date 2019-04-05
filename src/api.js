@@ -31,3 +31,7 @@ export const postComment = async (commentToPost, article_id) => {
                                 .catch(err => err)
                                 return responce
 }
+
+export const updateArticleVotes = async (patchBody) => {
+    console.log(patchBody)
+}
