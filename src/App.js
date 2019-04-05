@@ -14,7 +14,6 @@ class App extends Component {
   }
 
   render() {
-    {this.state.topicsList !== null && console.log(this.state.topicsList)}
     return (
       <div className="App">
         <Nav logInUser={this.logInUser} user={this.state.user} topicsList={this.state.topicsList} fetchAllTopics={this.fetchAllTopics}  />

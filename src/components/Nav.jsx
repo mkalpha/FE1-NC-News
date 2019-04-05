@@ -28,7 +28,7 @@ class Nav extends Component {
                     
                     Select Topic
                     <select onChange={this.handleChange} id="orderBySelector" name ="topic">
-                    {this.state.topicsList !== null && this.state.topicsList.topics.map(topic => {
+                    {this.props.topicsList !== null && this.props.topicsList.topics.map(topic => {
                    return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
                     })}
                         <option value="addNewTopic">Add New Topic</option>
@@ -38,22 +38,11 @@ class Nav extends Component {
                 <button>Submit Article</button>
            
             </form>}
-            {this.state.addNewTopic !== false && <AddNewTopic viewTopic={this.viewTopic} />}
+            {this.state.addNewTopic !== false && <AddNewTopic viewTopic={this.viewTopic} fetchAllTopics={this.props.fetchAllTopics} topic={this.state.topic} updateTopic={this.updateTopic} />}
             </div> 
               
             
         )
-    }
-
-    componentDidMount() {
-        this.fetchAllTopics()
-    }
-
-    fetchAllTopics = () => {
-        axios.get('https://nc-knews-andrew-workman.herokuapp.com/api/topics')
-                .then(topics => {
-                    this.setState({ topicsList : topics.data})
-                })
     }
 
     handleClick = (event) => {
@@ -76,8 +65,13 @@ class Nav extends Component {
         this.state.addNewTopic === true ? this.setState({ addNewTopic : false }) : this.setState({ addNewTopic : true })
     }
 
+    updateTopic = (newTopic) => {
+        this.setState({ topic : newTopic})
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
+        console.log(this.state.topic)
         const articleToPost = {
             title: this.state.articleTitle,
             body: this.state.articleBody,

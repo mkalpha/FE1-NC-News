@@ -36,9 +36,9 @@ class AddNewTopic extends Component {
           };
           axios.post('https://nc-knews-andrew-workman.herokuapp.com/api/topics', topicToPost)
             .then((res) => {
-                console.log(res)
+                this.props.updateTopic(this.state.topicName)
                 this.props.viewTopic()
-                navigate('/')
+                this.props.fetchAllTopics()
             })
      }
 }
