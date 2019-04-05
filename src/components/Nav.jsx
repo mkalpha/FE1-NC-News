@@ -4,7 +4,7 @@ import axios from 'axios';
 import '../styles/Nav.css'
 import AddNewTopic from '../components/AddNewTopic'
 import LogIn from '../components/LogIn'
-import TopicSelector from '../components/TopicSelector'
+
 
 class Nav extends Component {
     state = {
@@ -28,7 +28,7 @@ class Nav extends Component {
                     
                     Select Topic
                     <select onChange={this.handleChange} id="orderBySelector" name ="topic">
-                    {this.props.topicsList !== null && this.props.topicsList.topics.map(topic => {
+                    {this.props.topicsList !== null && this.props.topicsList.map(topic => {
                    return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
                     })}
                         <option value="addNewTopic">Add New Topic</option>

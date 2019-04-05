@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router'
 import '../styles/AddNewTopic.css'
+// import fetchAllTopics from '../src/api'
 
 class AddNewTopic extends Component {
     state = {

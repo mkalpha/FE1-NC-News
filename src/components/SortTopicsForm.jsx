@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+
 
 class SortTopicsForm extends Component {
 
@@ -7,7 +7,7 @@ class SortTopicsForm extends Component {
         return( this.props.topicsList !== null && <div> 
             <select onChange={this.getTopicValue} id="topicSelector">
                 <option value="all">all</option>
-                {this.props.topicsList.topics.map(topic => {
+                {this.props.topicsList.map(topic => {
                    return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
                 })}
             </select>

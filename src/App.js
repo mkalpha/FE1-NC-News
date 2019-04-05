@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Router, Link } from '@reach/router'
+import { Router } from '@reach/router'
 import Nav from './components/Nav';
 import Articles from './components/Articles'
 import Article from './components/Article'
-import axios from 'axios'
+import getAllTopics from '../src/api'
 
 class App extends Component {
 
@@ -14,8 +14,8 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
+    return ( 
+      <div className="App"> {this.state.topicsList !== null && console.log(this.state.topicsList)}
         <Nav logInUser={this.logInUser} user={this.state.user} topicsList={this.state.topicsList} fetchAllTopics={this.fetchAllTopics}  />
         <Router>
             <Articles path="/" topicsList={this.state.topicsList} />
@@ -30,14 +30,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchAllTopics()
+    getAllTopics().then((topics) => {
+      console.log(topics)
+      this.setState( {topicsList : topics} )
+   })
   }
 
 fetchAllTopics = () => {
-    axios.get('https://nc-knews-andrew-workman.herokuapp.com/api/topics')
-            .then(topics => {
-               this.setState({ topicsList : topics.data})
-            })
+     getAllTopics().then((topics) => {
+      console.log(topics)
+      this.setState( {topicsList : topics} )
+   })
   }
 
 }
