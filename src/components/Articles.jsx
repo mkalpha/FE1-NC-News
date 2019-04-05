@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Router, Link } from '@reach/router'
+import { Link } from '@reach/router'
 import axios from 'axios';
 import SortTopicsForm from '../components/SortTopicsForm';
-import '../styles/Articles.css'
+import '../styles/Articles.css';
+import { fetchArticles } from '../api';
 
 
 
@@ -34,42 +35,23 @@ class Articles extends Component {
                         </li>
               })}
             </ul>
-             
-            
-            </div>
-
-            
+         </div>    
         )
     }
 
     componentDidMount() {
-        this.fetchArticles();
+        fetchArticles(this.state.topicToggle, this.state.sortBy).then((articles) => {
+            this.setState({ articlesData : articles })
+        })
     }
 
     componentDidUpdate(_, prevState){
         if (this.state.topicToggle !== prevState.topicToggle || this.state.sortBy !== prevState.sortBy) {
-            this.fetchArticles()
+            fetchArticles(this.state.topicToggle, this.state.sortBy).then((articles) => {
+                this.setState( { articlesData : articles } )
+            })
         }
 
-    }
-
-    fetchArticles = () => {
-        if (this.state.topicToggle === null || this.state.topicToggle === 'all') {
-        axios.get('https://nc-knews-andrew-workman.herokuapp.com/api/articles')
-        .then(articles  => {
-            this.setState({articlesData : articles.data.articles})
-        })
-    }else if (this.state.sortBy !== null && this.state.topicToggle !== 'all'){
-         axios.get(`https://nc-knews-andrew-workman.herokuapp.com/api/articles?topic=${this.state.topicToggle}&sortby=${this.state.sortBy}`)
-        .then(articles  => {
-            this.setState({articlesData : articles.data.articles})
-        })
-    } else {
-        axios.get(`https://nc-knews-andrew-workman.herokuapp.com/api/articles?topic=${this.state.topicToggle}`)
-        .then(articles  => {
-            this.setState({articlesData : articles.data.articles})
-        })
-    }
     }
    
     updateToggleTopic = (topic) => {

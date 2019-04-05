@@ -15,7 +15,7 @@ class App extends Component {
 
   render() {
     return ( 
-      <div className="App"> {this.state.topicsList !== null && console.log(this.state.topicsList)}
+      <div className="App"> 
         <Nav logInUser={this.logInUser} user={this.state.user} topicsList={this.state.topicsList} fetchAllTopics={this.fetchAllTopics}  />
         <Router>
             <Articles path="/" topicsList={this.state.topicsList} />
