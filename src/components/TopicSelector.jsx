@@ -12,16 +12,16 @@ class TopicSelector extends Component {
                         </select>
     
    }
-    componentDidMount() {
-        this.fetchAllTopics()
-    }
+    // componentDidMount() {
+    //     this.fetchAllTopics()
+    // }
 
-    fetchAllTopics = () => {
-        axios.get('https://nc-knews-andrew-workman.herokuapp.com/api/topics')
-                .then(topics => {
-                   this.setState({ topicsList : topics.data})
-                })
-    }
+    // fetchAllTopics = () => {
+    //     axios.get('https://nc-knews-andrew-workman.herokuapp.com/api/topics')
+    //             .then(topics => {
+    //                this.setState({ topicsList : topics.data})
+    //             })
+    // }
 }
 
 export default TopicSelector

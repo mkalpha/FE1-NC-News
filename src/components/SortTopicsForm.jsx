@@ -2,16 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 class SortTopicsForm extends Component {
-    state = {
-        topicsList : null
-
-    }
 
     render() {
-        return( this.state.topicsList !== null && <div>
+        return( this.props.topicsList !== null && <div> 
             <select onChange={this.getTopicValue} id="topicSelector">
                 <option value="all">all</option>
-                {this.state.topicsList.topics.map(topic => {
+                {this.props.topicsList.topics.map(topic => {
                    return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
                 })}
             </select>
@@ -23,17 +19,6 @@ class SortTopicsForm extends Component {
             </select>
         </div>
         )
-    }
-
-    componentDidMount() {
-        this.fetchAllTopics()
-    }
-
-    fetchAllTopics = () => {
-        axios.get('https://nc-knews-andrew-workman.herokuapp.com/api/topics')
-                .then(topics => {
-                   this.setState({ topicsList : topics.data})
-                })
     }
    
     getTopicValue = (event) => {   

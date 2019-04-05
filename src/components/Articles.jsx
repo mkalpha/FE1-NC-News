@@ -15,10 +15,10 @@ class Articles extends Component {
     }
 
     render() {
-        return (this.state.articlesData !== null && <div id="articlesWrapper">
+        return (this.state.articlesData !== null && <div id="articlesWrapper"> 
             Articles
             
-            <SortTopicsForm updateToggleTopic={this.updateToggleTopic} updateSortBy={this.updateSortBy} />
+            <SortTopicsForm updateToggleTopic={this.updateToggleTopic} updateSortBy={this.updateSortBy} topicsList={this.props.topicsList} />
             
             <ul>
               {this.state.articlesData.map(article => {
