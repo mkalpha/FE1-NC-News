@@ -53,3 +53,9 @@ export const removeComment = async (comment_id) => {
                             .catch(err => err)
                             return remove
 }
+
+export const postArticle = async (articleToPost) => {
+  const newArticle = await axios.post(`${BASE_URL}/articles`, articleToPost)
+                            .catch(err => err)
+                            return newArticle
+}
