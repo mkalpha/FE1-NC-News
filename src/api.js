@@ -35,3 +35,18 @@ export const postComment = async (commentToPost, article_id) => {
 export const updateArticleVotes = async (patchBody) => {
     console.log(patchBody)
 }
+
+export const fetchSingleArticle = async (article_id) => {
+  const responce = await axios.get(`${BASE_URL}/articles/${article_id}`)
+                              .catch(err => err)
+                              return responce
+}
+
+
+// fetchSingleArticle = () => {
+        
+//   axios.get(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`)
+//       .then(article => {
+//           this.setState({ article : article.data.article[0] })
+//       })
+// }

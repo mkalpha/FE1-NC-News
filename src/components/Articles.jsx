@@ -23,7 +23,7 @@ class Articles extends Component {
             <ul>
               {this.state.articlesData.map(article => {
                   return <li key={article.article_id}>
-                            <div className="articleListWarpper">
+                            <div className="articleListWrapper">
                                 <div className="articleListTitle"><Link to={`/articles/${article.article_id}`}><b>Title: </b>{article.title}</Link></div>
                                 <div className="articleListTopic"><b>Topic: </b>{article.topic}</div>
                                 <div className="articleListAuthor"><b>Author: </b>{article.author}</div>

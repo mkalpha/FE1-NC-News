@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Router, navigate } from '@reach/router'
 import Comments from '../components/Comments'
 import AddComment from '../components/AddComment';
-import { updateArticleVotes } from '../api';
+import { fetchSingleArticle } from '../api';
 
 class Article extends Component {
 
@@ -33,21 +33,17 @@ class Article extends Component {
     }
 
     componentDidMount() {
-        this.fetchSingleArticle()
+        fetchSingleArticle(this.props.article_id).then((article) => {
+            this.setState({ article : article.data.article[0] })
+        })
     } 
 
     componentDidUpdate(prevProps, prevState) {
        if (prevProps !== this.props) {
-            this.fetchSingleArticle()
-        } 
-    }
-
-    fetchSingleArticle = () => {
-        
-        axios.get(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`)
-            .then(article => {
+            fetchSingleArticle(this.props.article_id).then((article) => {
                 this.setState({ article : article.data.article[0] })
             })
+        } 
     }
 
     patchArticleVotes = (event) => {
