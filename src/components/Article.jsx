@@ -4,6 +4,7 @@ import { Router, navigate } from '@reach/router'
 import Comments from '../components/Comments'
 import AddComment from '../components/AddComment';
 import { fetchSingleArticle } from '../api';
+import { removeArticle } from '../api';
 
 class Article extends Component {
 
@@ -58,13 +59,10 @@ class Article extends Component {
 
     deleteArticle =  (event) => {
         event.preventDefault();
-        axios.delete(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`)
-            .then(() => {
-                navigate('/')
-            }).catch(err => console.log(err))
+        removeArticle(this.props.article_id).then(() => {
+            navigate('/')
+        })
     }
-
-
 }
 
 

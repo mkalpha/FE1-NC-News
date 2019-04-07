@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const BASE_URL = 'https://nc-knews-andrew-workman.herokuapp.com/api'
 
@@ -42,11 +42,16 @@ export const fetchSingleArticle = async (article_id) => {
                               return responce
 }
 
+export const removeArticle = async (article_id) => {
+  const remove = await axios.delete(`${BASE_URL}/articles/${article_id}`)
+                            .catch(err => err)
+                            return remove
+}
 
-// fetchSingleArticle = () => {
-        
-//   axios.get(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`)
-//       .then(article => {
-//           this.setState({ article : article.data.article[0] })
-//       })
+// deleteArticle =  (event) => {
+//   event.preventDefault();
+//   axios.delete(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`)
+//       .then(() => {
+//           navigate('/')
+//       }).catch(err => console.log(err))
 // }
