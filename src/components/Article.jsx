@@ -11,10 +11,11 @@ class Article extends Component {
     state = {
         article : null,
         voteChange : 0,
+        showAddFirstComment : false
     }
 
     render() {
-       return (this.state.article !== null && <div id ="articleCommentWrapper"> 
+       return (this.state.article !== null && <div id ="articleCommentWrapper">
             <div id ="articleWrapper">
             <h2>{this.state.article.title}</h2>
             <p>{this.state.article.body}</p>
@@ -24,10 +25,10 @@ class Article extends Component {
             {this.state.article.author !== this.props.user && <button value="-1" onClick={this.patchArticleVotes}>vote down</button>}
             {this.state.article.author === this.props.user && <button onClick={this.deleteArticle}>Delete Article</button>}
             </div>
-            <AddComment article_id={this.state.article.article_id} />
+            <AddComment article_id={this.state.article.article_id} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment} />
             </div>
             <Router>
-                <Comments path="/" article_id={this.state.article_id} user={this.props.user}/>
+                <Comments path="/" article_id={this.state.article_id} user={this.props.user} comment_count={this.state.article.comment_count} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment}/>
             </Router>
             </div>
         )
@@ -63,6 +64,17 @@ class Article extends Component {
             navigate('/')
         })
     }
+
+    updateShowAddComment = () => {
+        if (this.state.showAddFirstComment === true) {
+            this.setState({ showAddFirstComment : false })
+        }else if (this.state.article.comment_count === '0') {
+            this.setState({ showAddFirstComment : true })
+        }
+        
+
+    }
+
 }
 
 

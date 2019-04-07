@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link, navigate } from '@reach/router'
-import axios from 'axios';
 import '../styles/Nav.css'
 import AddNewTopic from '../components/AddNewTopic'
 import LogIn from '../components/LogIn'
@@ -18,7 +17,7 @@ class Nav extends Component {
     }
     render() {
     return (<div id="nav"><div id="navWrapper"> 
-                    <div id ="logo"><b><Link to={'/'}><i class="fas fa-book-open"></i> NC NEWS</Link></b></div>
+                    <div id ="logo"><b><Link to={'/'}><i className="fas fa-book-open"></i> NC NEWS</Link></b></div>
                     <LogIn user={this.props.user} logInUser={this.props.logInUser} hideNewArticle={this.hideNewArticle} />
                     {this.props.user !== null && <button className="navButton" onClick={this.handleClick}><b>Post New Article</b></button>}
             </div>
@@ -86,15 +85,6 @@ class Nav extends Component {
                             topic: 'football'})
                         navigate(`/articles/${newArticleId}`,)
           })
-        // axios.post('https://nc-knews-andrew-workman.herokuapp.com/api/articles', articleToPost)
-        //         .then((newArticle) => {
-        //             const newArticleId = newArticle.data.newArticle[0].article_id
-        //             this.setState({ showAddArticle : false,
-        //                 articleTitle : '',
-        //                 articleBody : '',
-        //                 topic: 'football'})
-        //             navigate(`/articles/${newArticleId}`,)
-        //         })
     }
 }
 

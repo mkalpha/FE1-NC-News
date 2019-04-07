@@ -40,6 +40,7 @@ class AddComment extends Component {
         };
         postComment(commentToPost, this.props.article_id).then((responce) => {
             this.setState({commentBody : '', seeAddComment : false})
+            this.props.updateShowAddComment()
             navigate(`/articles/${this.props.article_id}`)
         })
 

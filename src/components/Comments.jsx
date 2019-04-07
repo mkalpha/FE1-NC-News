@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Router, Link } from '@reach/router';
 import Comment from '../components/Comment'
 import '../styles/Comments.css';
 
 class Comments extends Component {
     state ={
-        comments : null
+        comments : null,
     }
 
     render(){ 
        
-        return (  this.state.comments !== null && <div>
-            <div id="commentsWrapper">
+        return  ( <div>
+                    {this.state.comments !== null && <div id="commentsWrapper"> 
                 <ul>
                     {this.state.comments.articleComments.map(comment => {
                         return <li key={comment.comment_id}>
@@ -20,17 +19,22 @@ class Comments extends Component {
                                 </li>
                     })}
                 </ul>
+            </div>}
+            {this.props.showAddFirstComment !== false && <div>This article has no comments, be the first to post...</div>}
             </div>
-            </div>
-        )
+        )  
     }
 
     componentDidMount() {
-        this.fetchComments()
+          if (this.props.comment_count === '0' ) {
+              this.props.updateShowAddComment()
+          } else {
+         this.fetchComments()
+          }
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps !== this.props) {
+        if (prevProps !== this.props && this.props.comment_count !== '0' ) {
             this.fetchComments()
         } 
     }
