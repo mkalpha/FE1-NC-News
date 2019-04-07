@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { navigate } from '@reach/router'
+import React, { Component } from 'react';
+import { navigate } from '@reach/router';
 import axios from 'axios';
+import { removeComment } from '../api';
 
 class Comment extends Component {
 
@@ -22,8 +23,7 @@ class Comment extends Component {
 
     deleteComment = (event) => {
         event.preventDefault()
-        axios.delete(`https://nc-knews-andrew-workman.herokuapp.com/api/comments/${this.props.comment.comment_id}`)
-        .then((res) => {
+        removeComment(this.props.comment.comment_id).then(() => {
             navigate(`/articles/${this.props.article_id}`)
         })
     }

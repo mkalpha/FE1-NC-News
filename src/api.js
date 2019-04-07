@@ -48,10 +48,8 @@ export const removeArticle = async (article_id) => {
                             return remove
 }
 
-// deleteArticle =  (event) => {
-//   event.preventDefault();
-//   axios.delete(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`)
-//       .then(() => {
-//           navigate('/')
-//       }).catch(err => console.log(err))
-// }
+export const removeComment = async (comment_id) => {
+  const remove = await axios.delete(`${BASE_URL}/comments/${comment_id}`)
+                            .catch(err => err)
+                            return remove
+}
