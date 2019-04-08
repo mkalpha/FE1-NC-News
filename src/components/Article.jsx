@@ -21,8 +21,8 @@ class Article extends Component {
             <p>{this.state.article.body}</p>
             <div>
                 Author: {this.state.article.author} Date Created: {this.state.article.created_at} Comments {this.state.article.comment_count} Votes: {this.state.article.votes}
-            {this.state.article.author !== this.props.user && <button value="1" onClick={this.patchArticleVotes}>Vote up</button>}
-            {this.state.article.author !== this.props.user && <button value="-1" onClick={this.patchArticleVotes}>vote down</button>}
+            {(this.state.article.author !== this.props.user & this.props.user !== null ) && <button value="1" onClick={this.patchArticleVotes}>Vote up</button>}
+            {(this.state.article.author !== this.props.user & this.props.user !== null ) && <button value="-1" onClick={this.patchArticleVotes}>vote down</button>}
             {this.state.article.author === this.props.user && <button onClick={this.deleteArticle}>Delete Article</button>}
             </div>
             <AddComment article_id={this.state.article.article_id} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment} user={this.props.user} />
