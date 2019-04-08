@@ -6,13 +6,12 @@ import { navigate } from '@reach/router'
 class AddComment extends Component {
     state = {
         seeAddComment : false,
-        username : 'weegembump',
         commentBody : ''
     }
 
     render() {
         return (<div>
-                    <button onClick={this.showAddComment}>Add Comment</button>
+                   {this.props.user !== null && <button onClick={this.showAddComment}>Add Comment</button> }
                     <div className="addCommentForm">
                     {this.state.seeAddComment !== false && <form onSubmit={this.handleSubmit}>
                             <textarea onChange={this.handleChange} value={this.state.commentBody} name="body"></textarea>
@@ -36,7 +35,7 @@ class AddComment extends Component {
         event.preventDefault();
         const commentToPost = {
             body : this.state.commentBody,
-            username : this.state.username
+            username : this.props.user
         };
         postComment(commentToPost, this.props.article_id).then((responce) => {
             this.setState({commentBody : '', seeAddComment : false})

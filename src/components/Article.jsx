@@ -25,7 +25,7 @@ class Article extends Component {
             {this.state.article.author !== this.props.user && <button value="-1" onClick={this.patchArticleVotes}>vote down</button>}
             {this.state.article.author === this.props.user && <button onClick={this.deleteArticle}>Delete Article</button>}
             </div>
-            <AddComment article_id={this.state.article.article_id} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment} />
+            <AddComment article_id={this.state.article.article_id} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment} user={this.props.user} />
             </div>
             <Router>
                 <Comments path="/" article_id={this.state.article_id} user={this.props.user} comment_count={this.state.article.comment_count} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment}/>
@@ -71,10 +71,7 @@ class Article extends Component {
         }else if (this.state.article.comment_count === '0') {
             this.setState({ showAddFirstComment : true })
         }
-        
-
     }
-
 }
 
 
