@@ -18,7 +18,7 @@ class Nav extends Component {
     render() {
     return (<div id="nav"><div id="navWrapper"> 
                     <div id ="logo"><b><Link to={'/'}><i className="fas fa-book-open"></i> NC NEWS</Link></b></div>
-                    <LogIn user={this.props.user} logInUser={this.props.logInUser} hideNewArticle={this.hideNewArticle} />
+                    <LogIn user={this.props.user} logInUser={this.props.logInUser} hideNewArticle={this.hideNewArticle} hideNewTopic={this.hideNewTopic}/>
                     {this.props.user !== null && <button className="navButton" onClick={this.handleClick}><b>Post New Article</b></button>}
             </div>
             
@@ -52,6 +52,10 @@ class Nav extends Component {
 
     hideNewArticle = () => {
         this.setState({showAddArticle : true})
+    }
+
+    hideNewTopic = () => {
+        this.setState({addNewTopic : false})
     }
 
     handleChange = (event) => {

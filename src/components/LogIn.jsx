@@ -13,6 +13,7 @@ class LogIn extends Component {
         event.preventDefault()
         this.props.logInUser()
         this.props.hideNewArticle()
+        this.props.hideNewTopic()
     }
 }
 
