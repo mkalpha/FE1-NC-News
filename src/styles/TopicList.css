@@ -1,8 +1,22 @@
 #topicList ul {
     list-style: none;
+    padding-left:2px;
 }
 
 #topicList ul li {
     display:inline;
-    padding-left: 10px;
+    padding-left: 4px;
+}
+
+#topicList button {
+    background-color: white;
+    color: #0079d3;
+    border: none;
+    font-size: 14px;
+}
+
+#topicList button:hover{
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-color: black;
 }

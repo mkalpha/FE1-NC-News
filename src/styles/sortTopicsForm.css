@@ -1,14 +1,14 @@
 #sortMenu {
-    position:sticky;
-    top:65px;
+
     border-bottom-style: solid;
     border-bottom-color: grey;
-    background-color: white;
+    background-color: #f2efec;
+    border-bottom-width: 1px;
 }
 
 #sortMenu select{
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     background-color: white;
     border: 0px;
     border-style: none;

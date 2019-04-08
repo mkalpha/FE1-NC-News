@@ -17,10 +17,14 @@ class Nav extends Component {
     }
     render() {
     return (<div id="nav"><div id="navWrapper"> 
-                    <div id ="logo"><b><Link to={'/'}><i className="fas fa-book-open"></i> NC NEWS</Link></b></div> 
+                            <div id="outerLogo">
+                                <div id ="logo">  <b><i className="fas fa-book-open"></i></b></div>
+                                <div id="logoText"><b><Link to={'/'}>NC NEWS</Link></b></div>
+                            </div> 
+                        
                     <TopicsList topicsList={this.props.topicsList} updateToggleTopic={this.props.updateToggleTopic} />
                     <LogIn user={this.props.user} logInUser={this.props.logInUser} hideNewArticle={this.hideNewArticle} hideNewTopic={this.hideNewTopic}/>
-                    {this.props.user !== null && <button className="navButton" onClick={this.handleClick}><b>Post New Article</b></button>}
+                    {this.props.user !== null && <div id="postButton"> <button onClick={this.handleClick}>Post New Article</button></div>}
             </div>
             
             {(this.state.showAddArticle !== false && this.state.addNewTopic !== true ) &&<form id="postArticleForm" onSubmit={this.handleSubmit}>

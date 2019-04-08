@@ -2,9 +2,19 @@
     position:sticky;
     display: flex;
     justify-content: space-between;
-    background-color: #5f5f5f;
+    background-color: white;
     min-height: 65px;
     max-height: 65px;
+    border-bottom-style: solid;
+    border-bottom-color: #5f5f5f;
+    border-bottom-width: 1px;
+    
+}
+
+#outerLogo {
+    display: flex;  
+    justify-content: space-between;
+    padding-top:8px;
 }
 
 #nav {
@@ -30,15 +40,29 @@
     text-decoration: underline;
 }
 
-.navButton {
-    background-color: #446ea1;
-    border: none;
+#postButton {
+    padding-top:24px;
+}
+
+#postButton button {
+    background-color: #0079d3;
     color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 10px;
+    border-color: white;
+  }
+
+#postButton button:hover{
+    /* border-style: solid;
+    border-width: 2px;
+    border-color: #5f4a8b; */
+    /* padding: 6px; */
+    border-radius: 10px;
+    background-color: #005494
+    
   }
 
   #login {
@@ -49,9 +73,16 @@
       flex-grow: 1;
   }
 
+  #outerLogo {
+      border-right-style: solid;
+      border-right-width: 1px;
+      border-right-color: #5f4a8b;
+  }
+
   #logo {
-    padding-top:9px;
+    padding-top:17px;
     padding-left: 15px;
+    color: #0079d3;
   }
 
   #postArticleForm {
@@ -59,3 +90,17 @@
       color: black;
       font-size: 18px;
   }
+
+  #logoText {
+      padding-top:17px;
+      padding-left:3px;
+      padding-right: 15px;
+  }
+
+  #logoText a:link {
+      color: Black;
+  }
+
+  #logoText a:visited {
+    color: black;
+}
