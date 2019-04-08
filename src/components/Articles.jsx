@@ -10,12 +10,11 @@ import { fetchArticles } from '../api';
 class Articles extends Component {
     state ={
         articlesData : null,
-        topicToggle : null,
         sortBy : null
     }
 
     render() {
-        return (this.state.articlesData !== null && <div id="articlesWrapper">             
+        return (this.state.articlesData !== null && <div id="articlesWrapper">     
             <SortTopicsForm updateToggleTopic={this.updateToggleTopic} updateSortBy={this.updateSortBy} topicsList={this.props.topicsList} />
             
             <ul>
@@ -42,26 +41,18 @@ class Articles extends Component {
         })
     }
 
-    componentDidUpdate(_, prevState){
-        if (this.state.topicToggle !== prevState.topicToggle || this.state.sortBy !== prevState.sortBy) {
-            fetchArticles(this.state.topicToggle, this.state.sortBy).then((articles) => {
+    componentDidUpdate(prevProps, prevState){
+        if (this.props.toggleTopic !== prevProps.toggleTopic || this.state.sortBy !== prevState.sortBy) {
+            fetchArticles(this.props.toggleTopic, this.state.sortBy).then((articles) => {
                 this.setState( { articlesData : articles } )
             })
         }
 
     }
-   
-    updateToggleTopic = (topic) => {
-        this.setState({ topicToggle : topic })
-    }
 
     updateSortBy = (sortBy) => {
         this.setState({ sortBy : sortBy})
-    }
-
-
-
-   
+    }   
 }
 
 export default Articles

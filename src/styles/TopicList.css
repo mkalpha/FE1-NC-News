@@ -1,0 +1,8 @@
+#topicList ul {
+    list-style: none;
+}
+
+#topicList ul li {
+    display:inline;
+    padding-left: 10px;
+}

@@ -3,6 +3,7 @@ import { Link, navigate } from '@reach/router'
 import '../styles/Nav.css'
 import AddNewTopic from '../components/AddNewTopic'
 import LogIn from '../components/LogIn'
+import TopicsList from'../components/TopicsList'
 import { postArticle } from '../api'
 
 
@@ -16,7 +17,8 @@ class Nav extends Component {
     }
     render() {
     return (<div id="nav"><div id="navWrapper"> 
-                    <div id ="logo"><b><Link to={'/'}><i className="fas fa-book-open"></i> NC NEWS</Link></b></div>
+                    <div id ="logo"><b><Link to={'/'}><i className="fas fa-book-open"></i> NC NEWS</Link></b></div> 
+                    <TopicsList topicsList={this.props.topicsList} updateToggleTopic={this.props.updateToggleTopic} />
                     <LogIn user={this.props.user} logInUser={this.props.logInUser} hideNewArticle={this.hideNewArticle} hideNewTopic={this.hideNewTopic}/>
                     {this.props.user !== null && <button className="navButton" onClick={this.handleClick}><b>Post New Article</b></button>}
             </div>

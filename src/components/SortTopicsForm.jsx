@@ -6,12 +6,6 @@ class SortTopicsForm extends Component {
 
     render() {
         return( this.props.topicsList !== null && <div id="sortMenu"> 
-            <select onChange={this.getTopicValue} id="topicSelector">
-                <option value="all">all</option>
-                {this.props.topicsList.map(topic => {
-                   return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
-                })}
-            </select>
 
             <select onChange={this.getSortByValue} id="orderBySelector">
                 <option value="created_at">Date Created</option>
@@ -20,10 +14,6 @@ class SortTopicsForm extends Component {
             </select>
         </div>
         )
-    }
-   
-    getTopicValue = (event) => {   
-        this.props.updateToggleTopic(event.target.value)
     }
 
     getSortByValue = (event) => {
