@@ -18,7 +18,7 @@ class AddNewTopic extends Component {
                         Add Topic Description <input type="text" onChange={this.handleChange} value={this.state.topicDescription} name="topicDescription"></input>
                         <button>Create Your New Topic >>></button>
                     </form>
-                    <button>Cancel</button>
+                    <button onClick={this.cancelNewTopic}>Cancel</button>
         
                 </div>)
      }
@@ -40,6 +40,10 @@ class AddNewTopic extends Component {
                 this.props.viewTopic()
                 this.props.fetchAllTopics()
           })
+     }
+
+     cancelNewTopic = () => {
+        this.props.hideNewTopic()
      }
 }
 

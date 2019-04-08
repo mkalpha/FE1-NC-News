@@ -8,7 +8,7 @@ import { postArticle } from '../api'
 
 class Nav extends Component {
     state = {
-        showAddArticle : true,
+        showAddArticle : false,
         articleTitle : '',
         articleBody : '',
         topic: 'football',
@@ -22,7 +22,7 @@ class Nav extends Component {
                     {this.props.user !== null && <button className="navButton" onClick={this.handleClick}><b>Post New Article</b></button>}
             </div>
             
-            {this.state.showAddArticle !== false || this.state.addNewTopic !== true &&<form id="postArticleForm" onSubmit={this.handleSubmit}>
+            {(this.state.showAddArticle !== false && this.state.addNewTopic !== true ) &&<form id="postArticleForm" onSubmit={this.handleSubmit}>
                     Article Title: <input type="text" onChange={this.handleChange} value={this.state.articleTitle} name="articleTitle"></input>
                     Article Body<textarea onChange={this.handleChange} value={this.state.articleBody} name="articleBody"></textarea>
                     
@@ -38,7 +38,7 @@ class Nav extends Component {
                 <button>Submit Article</button>
            
             </form>}
-            {this.state.addNewTopic !== false && <AddNewTopic viewTopic={this.viewTopic} fetchAllTopics={this.props.fetchAllTopics} topic={this.state.topic} updateTopic={this.updateTopic} />}
+            {this.state.addNewTopic !== false && <AddNewTopic viewTopic={this.viewTopic} fetchAllTopics={this.props.fetchAllTopics} topic={this.state.topic} updateTopic={this.updateTopic} hideNewTopic={this.hideNewTopic} />}
             </div> 
               
             
@@ -51,7 +51,7 @@ class Nav extends Component {
     }
 
     hideNewArticle = () => {
-        this.setState({showAddArticle : true})
+        this.setState({showAddArticle : false})
     }
 
     hideNewTopic = () => {
