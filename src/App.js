@@ -10,7 +10,8 @@ class App extends Component {
 
   state = {
     user : null,
-    topicsList : null
+    topicsList : null,
+    toggleTopic : null
   }
 
   render() {

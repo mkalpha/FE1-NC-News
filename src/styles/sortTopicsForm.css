@@ -1,0 +1,19 @@
+#sortMenu {
+    position:sticky;
+    top:65px;
+    border-bottom-style: solid;
+    border-bottom-color: grey;
+    background-color: white;
+}
+
+#sortMenu select{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 20px;
+    background-color: white;
+    border: 0px;
+    border-style: none;
+}
+
+#sortMenu select option {
+    background-color:  white;
+}

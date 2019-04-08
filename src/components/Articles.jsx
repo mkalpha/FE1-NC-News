@@ -15,9 +15,7 @@ class Articles extends Component {
     }
 
     render() {
-        return (this.state.articlesData !== null && <div id="articlesWrapper"> 
-            Articles
-            
+        return (this.state.articlesData !== null && <div id="articlesWrapper">             
             <SortTopicsForm updateToggleTopic={this.updateToggleTopic} updateSortBy={this.updateSortBy} topicsList={this.props.topicsList} />
             
             <ul>

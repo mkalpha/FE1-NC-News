@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import '../styles/sortTopicsForm.css';
 
 
 class SortTopicsForm extends Component {
 
     render() {
-        return( this.props.topicsList !== null && <div> 
+        return( this.props.topicsList !== null && <div id="sortMenu"> 
             <select onChange={this.getTopicValue} id="topicSelector">
                 <option value="all">all</option>
                 {this.props.topicsList.map(topic => {

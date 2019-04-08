@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { postComment } from '../api'
 import { navigate } from '@reach/router'
 

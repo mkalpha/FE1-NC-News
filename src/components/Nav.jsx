@@ -13,7 +13,6 @@ class Nav extends Component {
         articleBody : '',
         topic: 'football',
         addNewTopic : false,
-        topicsList : null
     }
     render() {
     return (<div id="nav"><div id="navWrapper"> 
