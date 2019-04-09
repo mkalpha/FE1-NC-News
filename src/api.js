@@ -22,7 +22,7 @@ export const fetchArticles = async (topic, sortby) => {
       topic,
     },
   })
-   .catch(err => err)
+    .catch(err => err)
     return  articles
 }
 

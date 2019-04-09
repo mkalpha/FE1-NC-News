@@ -20,9 +20,9 @@ class Article extends Component {
             <h2>{this.state.article.title}</h2>
             <p>{this.state.article.body}</p>
             <div>
-                Author: {this.state.article.author} Date Created: {this.state.article.created_at} Comments {this.state.article.comment_count} Votes: {this.state.article.votes}
-            {(this.state.article.author !== this.props.user && this.props.user !== null ) && <button value="1" onClick={this.patchArticleVotes}>Vote up</button>}
-            {(this.state.article.author !== this.props.user && this.props.user !== null ) && <button value="-1" onClick={this.patchArticleVotes}>vote down</button>}
+                Author: {this.state.article.author} Date Created: {this.state.article.created_at} Comments {this.state.article.comment_count} Votes: {this.state.article.votes + this.state.voteChange}
+            {(this.state.article.author !== this.props.user && this.props.user !== null && this.state.voteChange !== 1 ) && <button value="1" onClick={this.patchArticleVotes}>Vote up</button>}
+            {(this.state.article.author !== this.props.user && this.props.user !== null && this.state.voteChange !== -1) && <button value="-1" onClick={this.patchArticleVotes}>vote down</button>}
             {this.state.article.author === this.props.user && <button onClick={this.deleteArticle}>Delete Article</button>}
             </div>
             <AddComment article_id={this.state.article.article_id} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment} user={this.props.user} />
@@ -52,10 +52,9 @@ class Article extends Component {
         const patchBody = {
             inc_votes : Number.parseInt(event.target.value, 0)
         }
+        const currentVoteChange = this.state.voteChange +  Number.parseInt(event.target.value, 0)
+        this.setState({ voteChange : currentVoteChange })
         axios.patch(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`, patchBody)
-        .then(patchedArticle => {
-            this.setState({ article : patchedArticle.data.returnedArticle[0] })
-        })
     }
 
     deleteArticle =  (event) => {
