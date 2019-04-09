@@ -5,16 +5,18 @@ import { removeComment } from '../api';
 
 class Comment extends Component {
 
-    state = {}
+    state = {
+        voteChange : 0
+    }
 
     render(){
     
         return (<div className="commentWrapper"> 
         <div className="commentauthor">{this.props.comment.author}</div>
         <div className="commentbody">{this.props.comment.body}</div>
-        <div className="commentMetaData">Date Posted: {this.props.comment.created_at} Votes: {this.props.comment.votes}             
-        {(this.props.comment.author !== this.props.user && this.props.user !== null) && <button value="1" onClick={this.patchCommentVotes}>Vote up</button> }
-        {(this.props.comment.author !== this.props.user && this.props.user !== null) && <button value="-1" onClick={this.patchCommentVotes}>vote down</button>}
+        <div className="commentMetaData">Date Posted: {this.props.comment.created_at} Votes: {this.props.comment.votes + this.state.voteChange}             
+        {(this.props.comment.author !== this.props.user && this.props.user !== null && this.state.voteChange !== 1) && <button value="1" onClick={this.patchCommentVotes}>Vote up</button> }
+        {(this.props.comment.author !== this.props.user && this.props.user !== null && this.state.voteChange !== -1) && <button value="-1" onClick={this.patchCommentVotes}>vote down</button>}
         {this.props.comment.author === this.props.user && <button onClick={this.deleteComment}>Delete comment</button>}
     </div>
         </div>
@@ -32,10 +34,9 @@ class Comment extends Component {
         const patchVotesBody = {
             inc_votes : Number.parseInt(event.target.value, 0)
         }
+        const currentVoteChange = this.state.voteChange +  Number.parseInt(event.target.value, 0)
+        this.setState({ voteChange : currentVoteChange })
         axios.patch(`https://nc-knews-andrew-workman.herokuapp.com/api/comments/${this.props.comment.comment_id}`, patchVotesBody)
-            .then((res) => {
-                navigate(`/articles/${this.props.article_id}`)
-            })
     }
 
 }
