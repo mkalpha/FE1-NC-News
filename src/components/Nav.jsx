@@ -28,11 +28,10 @@ class Nav extends Component {
             </div>
             
             {(this.state.showAddArticle !== false && this.state.addNewTopic !== true ) &&<form id="postArticleForm" onSubmit={this.handleSubmit}>
-                    Article Title: <input type="text" onChange={this.handleChange} value={this.state.articleTitle} name="articleTitle"></input>
-                    Article Body<textarea onChange={this.handleChange} value={this.state.articleBody} name="articleBody"></textarea>
+                    <div id="newArticleTitle">Article Title:<br/>  <input type="text" onChange={this.handleChange} value={this.state.articleTitle} name="articleTitle"></input> </div>
+                    <div id="newArticleBody">Article:<br/>  <textarea onChange={this.handleChange} value={this.state.articleBody} name="articleBody"></textarea></div>
                     
-                    Select Topic
-                    <select onChange={this.handleChange} id="orderBySelector" name ="topic">
+                    Select Topic  <select onChange={this.handleChange} id="orderBySelector" name ="topic">
                     {this.props.topicsList !== null && this.props.topicsList.map(topic => {
                    return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
                     })}

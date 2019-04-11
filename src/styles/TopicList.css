@@ -6,6 +6,7 @@
 #topicList ul li {
     display:inline;
     padding-left: 4px;
+    color:black;
 }
 
 #topicList button {

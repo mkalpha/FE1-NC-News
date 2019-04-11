@@ -5,17 +5,20 @@ import Comments from '../components/Comments'
 import AddComment from '../components/AddComment';
 import { fetchSingleArticle } from '../api';
 import { removeArticle } from '../api';
+import { promised } from 'q';
 
 class Article extends Component {
 
     state = {
         article : null,
         voteChange : 0,
-        showAddFirstComment : false
+        showAddFirstComment : false,
+        isError : false
     }
 
     render() {
-       return (this.state.article !== null && <div id ="articleCommentWrapper">
+       return ( this.state.isError === true ? <h1>Error!!!</h1> :
+           this.state.article !== null && <div id ="articleCommentWrapper">
             <div id ="articleWrapper">
             <h2>{this.state.article.title}</h2>
             <p>{this.state.article.body}</p>
@@ -30,13 +33,19 @@ class Article extends Component {
             <Router>
                 <Comments path="/" article_id={this.state.article_id} user={this.props.user} comment_count={this.state.article.comment_count} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment}/>
             </Router>
+           
             </div>
+            
         )
     }
 
     componentDidMount() {
         fetchSingleArticle(this.props.article_id).then((article) => {
+
             this.setState({ article : article.data.article[0] })
+        }).catch(err => {
+            console.log(err)
+            this.setState({ isError : true })
         })
     } 
 

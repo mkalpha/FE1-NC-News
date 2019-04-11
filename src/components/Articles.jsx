@@ -10,11 +10,12 @@ import { fetchArticles } from '../api';
 class Articles extends Component {
     state ={
         articlesData : null,
-        sortBy : null
+        sortBy : null,
     }
 
     render() {
-        return (this.state.articlesData !== null && <div id="articlesWrapper">     
+        return ( this.state.articlesData === null ? <h1>Loading ...</h1> :
+             <div id="articlesWrapper">     
             <SortTopicsForm updateToggleTopic={this.updateToggleTopic} updateSortBy={this.updateSortBy} topicsList={this.props.topicsList} />
             
             <ul>
@@ -31,12 +32,12 @@ class Articles extends Component {
                         </li>
               })}
             </ul>
-         </div>    
+         </div>  
         )
     }
 
     componentDidMount() {
-        fetchArticles(this.state.topicToggle, this.state.sortBy).then((articles) => {
+        fetchArticles(this.props.toggleTopic, this.state.sortBy).then((articles) => {
             this.setState({ articlesData : articles })
         })
     }

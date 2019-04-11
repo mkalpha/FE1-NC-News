@@ -15,7 +15,7 @@ export const postNewTopic = async (topicToPost) => {
 }
 
 export const fetchArticles = async (topic, sortby) => {
-   if (topic === 'all') topic = null
+   if (topic === 'all' || topic === 0) topic = null
    const { data: { articles } } = await axios.get(`${BASE_URL}/articles`, {
     params: {
       sortby,
@@ -32,14 +32,12 @@ export const postComment = async (commentToPost, article_id) => {
                                 return responce
 }
 
-export const updateArticleVotes = async (patchBody) => {
-    console.log(patchBody)
-}
-
 export const fetchSingleArticle = async (article_id) => {
-  const responce = await axios.get(`${BASE_URL}/articles/${article_id}`)
-                              .catch(err => err)
-                              return responce
+  const response = await axios.get(`${BASE_URL}/articles/${article_id}`)
+                              .catch(err => {
+                                throw err.response.data.status
+                              })
+                              return response
 }
 
 export const removeArticle = async (article_id) => {
