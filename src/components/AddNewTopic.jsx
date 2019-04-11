@@ -12,11 +12,11 @@ class AddNewTopic extends Component {
 
         return (<div id="addNewTopicWrapper">
                     <form id="postTopicForm" onSubmit={this.handleSubmit}>
-                        Add Topic Name: <input type="text" onChange={this.handleChange} value={this.state.topicName} name="topicName"></input>
-                        Add Topic Description <input type="text" onChange={this.handleChange} value={this.state.topicDescription} name="topicDescription"></input>
+                       <div id="addTopicName"> Add Topic Name:<br/> <input type="text" onChange={this.handleChange} value={this.state.topicName} name="topicName"></input></div>
+                        <div id="addTopicDescription">Add Topic Description <br/> <input type="text" onChange={this.handleChange} value={this.state.topicDescription} name="topicDescription"></input></div>
                         <button>Create Your New Topic >>></button>
                     </form>
-                    <button onClick={this.cancelNewTopic}>Cancel</button>
+                   <div id="cancel"><button onClick={this.cancelNewTopic}>Cancel</button> </div>
         
                 </div>)
      }

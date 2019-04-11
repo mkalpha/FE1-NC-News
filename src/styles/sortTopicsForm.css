@@ -1,9 +1,12 @@
 #sortMenu {
-
     border-bottom-style: solid;
     border-bottom-color: grey;
     background-color: #f2efec;
     border-bottom-width: 1px;
+    border-top-style: solid;
+    border-top-color: grey;
+    border-top-width: 1px;
+    padding:5px;
 }
 
 #sortMenu select{
@@ -12,6 +15,8 @@
     background-color: white;
     border: 0px;
     border-style: none;
+    padding:4px;
+    border-top-style: 2px;
 }
 
 #sortMenu select option {

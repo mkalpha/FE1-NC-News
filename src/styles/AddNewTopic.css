@@ -1,4 +1,45 @@
 #addNewTopicWrapper {
     color: black;
     font-size: 18px;
+    padding:10px;
+    background-color: #f2efec;
 }
+
+#addNewTopicWrapper button {
+    background-color: #0079d3;
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+#addNewTopicWrapper button:hover{
+    border-radius: 10px;
+    background-color: #005494; 
+  }
+
+#addTopicName {
+    padding:10px;
+}
+
+#addTopicDescription {
+    padding-bottom:10px;
+}
+
+#cancel button {
+    background-color: #ff9200;
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 10px;
+     /* color: #ff9200; */
+}
+
+#cancel button:hover{
+    border-radius: 10px;
+    background-color: #c26e00;    
+  }
