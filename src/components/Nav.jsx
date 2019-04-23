@@ -18,7 +18,7 @@ class Nav extends Component {
     render() {
     return (<div id="nav"><div id="navWrapper"> 
                             <div id="outerLogo">
-                                <div id ="logo">  <b><i className="fas fa-book-open"></i></b></div>
+                                <div id ="logo"> <Link to={'/'}><b><i className="fas fa-book-open"></i></b></Link></div>
                                 <div id="logoText"><b><Link to={'/'}>NC NEWS</Link></b></div>
                             </div> 
                         

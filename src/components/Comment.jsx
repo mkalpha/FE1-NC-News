@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import axios from 'axios';
 import { removeComment } from '../api';
+import '../styles/comment.css'
 
 class Comment extends Component {
 
@@ -14,9 +15,9 @@ class Comment extends Component {
         return (<div className="commentWrapper"> 
         <div className="commentauthor">{this.props.comment.author}</div>
         <div className="commentbody">{this.props.comment.body}</div>
-        <div className="commentMetaData">Date Posted: {this.props.comment.created_at} Votes: {this.props.comment.votes + this.state.voteChange}             
-        {(this.props.comment.author !== this.props.user && this.props.user !== null && this.state.voteChange !== 1) && <button value="1" onClick={this.patchCommentVotes}>Vote up</button> }
-        {(this.props.comment.author !== this.props.user && this.props.user !== null && this.state.voteChange !== -1) && <button value="-1" onClick={this.patchCommentVotes}>vote down</button>}
+        <div className="commentMetaData">Date Posted: {this.props.comment.created_at.slice(0,10)} Votes: {this.props.comment.votes + this.state.voteChange}             
+        {(this.props.comment.author !== this.props.user && this.props.user !== null && this.state.voteChange !== 1) && <button value="1" onClick={this.patchCommentVotes}> Like <i class="far fa-thumbs-up"></i></button> }
+        {(this.props.comment.author !== this.props.user && this.props.user !== null && this.state.voteChange !== -1) && <button value="-1" onClick={this.patchCommentVotes}>Dislike <i class="far fa-thumbs-down"></i></button>}
         {this.props.comment.author === this.props.user && <button onClick={this.deleteComment}>Delete comment</button>}
     </div>
         </div>

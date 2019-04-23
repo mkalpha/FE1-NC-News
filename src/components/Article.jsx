@@ -5,7 +5,7 @@ import Comments from '../components/Comments'
 import AddComment from '../components/AddComment';
 import { fetchSingleArticle } from '../api';
 import { removeArticle } from '../api';
-import { promised } from 'q';
+import '../styles/article.css'
 
 class Article extends Component {
 
@@ -20,12 +20,12 @@ class Article extends Component {
        return ( this.state.isError === true ? <h1>Error!!!</h1> :
            this.state.article !== null && <div id ="articleCommentWrapper">
             <div id ="articleWrapper">
-            <h2>{this.state.article.title}</h2>
-            <p>{this.state.article.body}</p>
+            <h2><i className="fas fa-quote-left"></i>  {this.state.article.title}  <i className="fas fa-quote-right"></i></h2>
+            <div id="articleBody"><p>{this.state.article.body}</p></div>
             <div>
-                Author: {this.state.article.author} Date Created: {this.state.article.created_at} Comments {this.state.article.comment_count} Votes: {this.state.article.votes + this.state.voteChange}
-            {(this.state.article.author !== this.props.user && this.props.user !== null && this.state.voteChange !== 1 ) && <button value="1" onClick={this.patchArticleVotes}>Vote up</button>}
-            {(this.state.article.author !== this.props.user && this.props.user !== null && this.state.voteChange !== -1) && <button value="-1" onClick={this.patchArticleVotes}>vote down</button>}
+                Author: {this.state.article.author} Date Created: {this.state.article.created_at.slice(0,10)} Comments {this.state.article.comment_count} Votes: {this.state.article.votes + this.state.voteChange}
+            {(this.state.article.author !== this.props.user && this.props.user !== null && this.state.voteChange !== 1 ) && <button value="1" onClick={this.patchArticleVotes}>   Like <i class="far fa-thumbs-up"></i></button>}
+            {(this.state.article.author !== this.props.user && this.props.user !== null && this.state.voteChange !== -1) && <button value="-1" onClick={this.patchArticleVotes}>    Dislike <i class="far fa-thumbs-down"></i> </button>}
             {this.state.article.author === this.props.user && <button onClick={this.deleteArticle}>Delete Article</button>}
             </div>
             <AddComment article_id={this.state.article.article_id} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment} user={this.props.user} />

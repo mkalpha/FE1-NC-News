@@ -1,11 +1,11 @@
 #login {
-    padding-top:26px;
+    padding-top:15px;
     color: black;
     font-size: 14px;
 }
 
 #login button {
-    background-color: #0079d3;
+    /* background-color: #0079d3;
     color: white;
     border-style: solid;
     border-width: 2px;
@@ -13,9 +13,28 @@
     padding: 8px;
     border-radius: 10px;
     border-color: white;
+    font-weight: 700; */
+    background-color: white;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    margin: 5px;
 }
 
 #login button:hover {
+    /* border-radius: 10px;
+    background-color: #005494 */
+    background-color: #f2efec;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 14px;
+    padding: 8px;
     border-radius: 10px;
-    background-color: #005494
+    font-weight: 700;
+    margin: 5px;
 }
