@@ -87,6 +87,7 @@
       font-size: 20px;
       text-align: right;
       flex-grow: 1;
+      
   }
 
   #outerLogo {
@@ -212,4 +213,7 @@
         padding-right: 10px;
         padding-left:10px;
     }
+
+
 }
+
