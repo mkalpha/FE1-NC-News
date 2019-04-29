@@ -5,15 +5,6 @@
 }
 
 #login button {
-    /* background-color: #0079d3;
-    color: white;
-    border-style: solid;
-    border-width: 2px;
-    font-size: 14px;
-    padding: 8px;
-    border-radius: 10px;
-    border-color: white;
-    font-weight: 700; */
     background-color: white;
     color: black;
     border-style: solid;
@@ -26,8 +17,6 @@
 }
 
 #login button:hover {
-    /* border-radius: 10px;
-    background-color: #005494 */
     background-color: #f2efec;
     color: black;
     border-style: solid;
@@ -37,4 +26,13 @@
     border-radius: 10px;
     font-weight: 700;
     margin: 5px;
+}
+
+@media (max-width: 849px) {
+        #login button {
+            font-size: 12px;
+        }
+        #login button:hover {
+            font-size:12px;
+        }
 }

@@ -22,3 +22,26 @@
     border-bottom-width: 2px;
     border-color: black;
 }
+
+#hamburgerMenu {
+    display:none;
+}
+
+@media (max-width: 849px) {
+    #topicList {
+        display: none;
+    }
+
+    #hamburgerMenu {
+        display:inline;
+        padding-left:10px;
+        padding-top:22px;
+    }
+
+    #hamburgerMenu button {
+        font-size:32px;
+        background-color: white;
+        color: #0079d3;
+        border: none;
+    }
+}

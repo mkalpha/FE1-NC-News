@@ -9,7 +9,7 @@ const TopicsList = props => {
         props.updateToggleTopic(event.target.value)
     }
 
-    return ( <div id="topicList">
+    return (<> <div id="topicList">
         <ul><li key="all" onClick={handleClick}><Link to="/"><button value="all">All Topics</button></Link></li>
             {props.topicsList && props.topicsList.map(topic => {
                 // console.log(topic.slug)
@@ -18,6 +18,10 @@ const TopicsList = props => {
         </ul>
     </div>
 
+    <div id="hamburgerMenu">
+    <button><i class="fas fa-bars"></i></button>
+    </div>
+    </>
     )
 }
 
