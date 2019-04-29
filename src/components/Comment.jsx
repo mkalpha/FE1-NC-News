@@ -16,8 +16,8 @@ class Comment extends Component {
         <div className="commentauthor">{this.props.comment.author}</div>
         <div className="commentbody">{this.props.comment.body}</div>
         <div className="commentMetaData">Date Posted: {this.props.comment.created_at.slice(0,10)} Votes: {this.props.comment.votes + this.state.voteChange}             
-        {(this.props.comment.author !== this.props.user && this.props.user !== null && this.state.voteChange !== 1) && <button value="1" onClick={this.patchCommentVotes}> Like <i class="far fa-thumbs-up"></i></button> }
-        {(this.props.comment.author !== this.props.user && this.props.user !== null && this.state.voteChange !== -1) && <button value="-1" onClick={this.patchCommentVotes}>Dislike <i class="far fa-thumbs-down"></i></button>}
+        {(this.props.comment.author !== this.props.user && this.props.user !== null && this.state.voteChange !== 1) && <button value="1" onClick={this.patchCommentVotes}> Like </button> }
+        {(this.props.comment.author !== this.props.user && this.props.user !== null && this.state.voteChange !== -1) && <button value="-1" onClick={this.patchCommentVotes}>Dislike</button>}
         {this.props.comment.author === this.props.user && <button onClick={this.deleteComment}>Delete comment</button>}
     </div>
         </div>

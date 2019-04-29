@@ -17,6 +17,7 @@ class Article extends Component {
     }
 
     render() {
+       
        return ( this.state.isError === true ? <h1>Error!!!</h1> :
            this.state.article !== null && <div id ="articleCommentWrapper">
             <div id ="articleWrapper">
@@ -24,8 +25,8 @@ class Article extends Component {
             <div id="articleBody"><p>{this.state.article.body}</p></div>
             <div>
                 Author: {this.state.article.author} Date Created: {this.state.article.created_at.slice(0,10)} Comments {this.state.article.comment_count} Votes: {this.state.article.votes + this.state.voteChange}
-            {(this.state.article.author !== this.props.user && this.props.user !== null && this.state.voteChange !== 1 ) && <button value="1" onClick={this.patchArticleVotes}>   Like <i class="far fa-thumbs-up"></i></button>}
-            {(this.state.article.author !== this.props.user && this.props.user !== null && this.state.voteChange !== -1) && <button value="-1" onClick={this.patchArticleVotes}>    Dislike <i class="far fa-thumbs-down"></i> </button>}
+            {(this.state.article.author !== this.props.user && this.props.user !== null && this.state.voteChange !== 1 ) && <button value="1" onClick={this.patchArticleVotes}>   Like </button>}
+            {(this.state.article.author !== this.props.user && this.props.user !== null && this.state.voteChange !== -1) && <button value="-1" onClick={this.patchArticleVotes}>    Dislike  </button>}
             {this.state.article.author === this.props.user && <button onClick={this.deleteArticle}>Delete Article</button>}
             </div>
             <AddComment article_id={this.state.article.article_id} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment} user={this.props.user} />
@@ -33,7 +34,7 @@ class Article extends Component {
             <Router>
                 <Comments path="/" article_id={this.state.article_id} user={this.props.user} comment_count={this.state.article.comment_count} showAddFirstComment={this.state.showAddFirstComment} updateShowAddComment={this.updateShowAddComment}/>
             </Router>
-           
+           { console.log('Votes :' + this.state.article.votes + 'VoteChange :'+ this.state.voteChange)}
             </div>
             
         )
