@@ -9,17 +9,22 @@ const TopicsList = props => {
         props.updateToggleTopic(event.target.value)
     }
 
+    const handleHamburgerClick = (event) => {
+        event.preventDefault()
+        props.drawerToggleHandler();
+        
+    }
+
     return (<> <div id="topicList">
         <ul><li key="all" onClick={handleClick}><Link to="/"><button value="all">All Topics</button></Link></li>
             {props.topicsList && props.topicsList.map(topic => {
-                // console.log(topic.slug)
                 return <li key={topic.slug} onClick={handleClick}><Link to="/"><button value={topic.slug}>{topic.slug}</button></Link></li>
             })}
         </ul>
     </div>
 
     <div id="hamburgerMenu">
-    <button><i class="fas fa-bars"></i></button>
+    <button onClick={handleHamburgerClick}><i class="fas fa-bars"></i></button>
     </div>
     </>
     )

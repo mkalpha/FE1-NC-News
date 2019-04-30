@@ -21,8 +21,8 @@ class Nav extends Component {
                                 <div id ="logo"> <Link to={'/'}><b><i className="fas fa-book-open"></i></b></Link></div>
                                 <div id="logoText"><b><Link to={'/'}>NC NEWS</Link></b></div>
                             </div> 
-                        
-                    <TopicsList topicsList={this.props.topicsList} updateToggleTopic={this.props.updateToggleTopic} />
+                       
+                    <TopicsList topicsList={this.props.topicsList} updateToggleTopic={this.props.updateToggleTopic} drawerToggleHandler={this.props.drawerToggleHandler} />
                     <LogIn user={this.props.user} logInUser={this.props.logInUser} hideNewArticle={this.hideNewArticle} hideNewTopic={this.hideNewTopic}/>
                     {this.props.user !== null && <div id="postButton"> <button onClick={this.handleClick}>Post New Article</button></div>}
             </div>

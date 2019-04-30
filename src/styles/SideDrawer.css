@@ -1,0 +1,40 @@
+.sideDrawer {
+    height:120%;
+    background-color: white;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    position:fixed;
+    top:0;
+    left:0;
+    width: 70%;
+    z-index: 200;
+    display:none;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.sideDrawer i {
+    color: #0079d3;
+    
+}
+
+.sideDrawer button {
+    background-color: white;
+    color: #0079d3;
+    border: none;
+    font-size: 24px;
+    font-weight: 700;
+    padding-top: 15px;
+}
+
+.sideDrawer button:hover {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-color: black;
+} 
+
+
+@media (max-width: 849px) {
+    .sideDrawer {
+        display: inline;
+    }
+}
