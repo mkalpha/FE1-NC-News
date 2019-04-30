@@ -6,6 +6,7 @@ const SideDrawer = props => {
         const handleClick = (event) => {
         event.preventDefault()
         props.updateToggleTopic(event.target.value)
+        props.drawerToggleHandler();
     }
 
     return ( <div> 

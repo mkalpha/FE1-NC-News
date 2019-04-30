@@ -21,7 +21,7 @@ class App extends Component {
     return ( 
       <div className="App" style={{height : '100%'}}> 
         <Nav logInUser={this.logInUser} user={this.state.user} topicsList={this.state.topicsList} fetchAllTopics={this.fetchAllTopics} updateToggleTopic={this.updateToggleTopic} drawerToggleHandler={this.drawerToggleHandler}  />
-        {this.state.sideDrawerOpen === true && <SideDrawer topicsList={this.state.topicsList} fetchAllTopics={this.fetchAllTopics} updateToggleTopic={this.updateToggleTopic} />}
+        {this.state.sideDrawerOpen === true && <SideDrawer topicsList={this.state.topicsList} fetchAllTopics={this.fetchAllTopics} updateToggleTopic={this.updateToggleTopic} drawerToggleHandler={this.drawerToggleHandler} />}
         {this.state.sideDrawerOpen === true && <BackDrop />}
         <Router>
             <Articles path="/" topicsList={this.state.topicsList} toggleTopic={this.state.toggleTopic} />
