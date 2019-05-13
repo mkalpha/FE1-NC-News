@@ -7,6 +7,8 @@ const TopicsList = props => {
     const handleClick = (event) => {
         event.preventDefault()
         props.updateToggleTopic(event.target.value)
+        console.log(props.resetPage)
+        props.resetPage()
     }
 
     const handleHamburgerClick = (event) => {

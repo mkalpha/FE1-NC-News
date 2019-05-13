@@ -11,7 +11,6 @@ class Articles extends Component {
     state ={
         articlesData : null,
         sortBy : null,
-        page : 1
     }
 
     render() {
@@ -21,13 +20,13 @@ class Articles extends Component {
              <div id="articlesWrapper"> 
 
              <div id ="pagination">
-                     Page {this.state.page} of {Math.ceil(this.state.articlesData.length/10)} 
-                    {this.state.page !== 1 && <button value = "-1" onClick={this.changePage}>Previous</button>}
-                    {this.state.page !== Math.ceil(this.state.articlesData.length/10) && <button value="1" onClick={this.changePage}>Next</button>}
+                     Page {this.props.page} of {Math.ceil(this.state.articlesData.length/10)} 
+                    {this.props.page !== 1 && <button value = "-1" onClick={this.props.changePage}>Previous</button>}
+                    {this.props.page !== Math.ceil(this.state.articlesData.length/10) && <button value="1" onClick={this.props.changePage}>Next</button>}
             </div> 
             <ul>
               {this.state.articlesData.map((article, index) => {
-               if (index + 1 <= this.state.page * 10 && index + 1 > (this.state.page - 1 ) * 10 ) {
+               if (index + 1 <= this.props.page * 10 && index + 1 > (this.props.page - 1 ) * 10 ) {
                   return <li key={article.article_id}>
                             <div className={`articleListWrapper${article.topic}`}>
                             <div className="articleTitleWrapper">
@@ -70,11 +69,11 @@ class Articles extends Component {
         this.setState({ sortBy : sortBy})
     }   
 
-    changePage = (event) => {
-        const change = Number.parseInt(event.target.value, 0)
-        const newPage = this.state.page + change;
-        this.setState( { page : newPage } )
-    }
+    // changePage = (event) => {
+    //     const change = Number.parseInt(event.target.value, 0)
+    //     const newPage = this.state.page + change;
+    //     this.setState( { page : newPage } )
+    // }
 }
 
 export default Articles

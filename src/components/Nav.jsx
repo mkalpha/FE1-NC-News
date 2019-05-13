@@ -22,7 +22,7 @@ class Nav extends Component {
                                 <div id="logoText"><b><Link to={'/'}>NC NEWS</Link></b></div>
                             </div> 
                        
-                    <TopicsList topicsList={this.props.topicsList} updateToggleTopic={this.props.updateToggleTopic} drawerToggleHandler={this.props.drawerToggleHandler} />
+                    <TopicsList topicsList={this.props.topicsList} updateToggleTopic={this.props.updateToggleTopic} drawerToggleHandler={this.props.drawerToggleHandler} resetPage={this.props.resetPage} />
                     <LogIn user={this.props.user} logInUser={this.props.logInUser} hideNewArticle={this.hideNewArticle} hideNewTopic={this.hideNewTopic}/>
                     {this.props.user !== null && <div id="postButton"> <button onClick={this.handleClick}>Post New Article</button></div>}
             </div>
