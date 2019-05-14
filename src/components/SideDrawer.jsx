@@ -7,6 +7,7 @@ const SideDrawer = props => {
         event.preventDefault()
         props.updateToggleTopic(event.target.value)
         props.drawerToggleHandler();
+        props.resetPage();
     }
 
     return ( <div> 
