@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router'
 import SortTopicsForm from '../components/SortTopicsForm';
+import Pagination from '../components/Pagination';
 import '../styles/Articles.css';
 import { fetchArticles } from '../api';
 
@@ -15,15 +16,10 @@ class Articles extends Component {
 
     render() {
         return ( this.state.articlesData === null ? <h1>Loading ...</h1> :
-            <div id ="mainWrapper"
-            ><SortTopicsForm updateToggleTopic={this.updateToggleTopic} updateSortBy={this.updateSortBy} topicsList={this.props.topicsList} />
+            <div id ="mainWrapper" >
+            <SortTopicsForm updateToggleTopic={this.updateToggleTopic} updateSortBy={this.updateSortBy} topicsList={this.props.topicsList} />
              <div id="articlesWrapper"> 
-
-             <div id ="pagination">
-                     Page {this.props.page} of {Math.ceil(this.state.articlesData.length/10)} 
-                    {this.props.page !== 1 && <button value = "-1" onClick={this.props.changePage}>Previous</button>}
-                    {this.props.page !== Math.ceil(this.state.articlesData.length/10) && <button value="1" onClick={this.props.changePage}>Next</button>}
-            </div> 
+            <Pagination page={this.props.page} changePage={this.props.changePage} articlesData={this.state.articlesData} />
             <ul>
               {this.state.articlesData.map((article, index) => {
                if (index + 1 <= this.props.page * 10 && index + 1 > (this.props.page - 1 ) * 10 ) {
@@ -45,6 +41,7 @@ class Articles extends Component {
                  }
               })}
             </ul>
+            <Pagination page={this.props.page} changePage={this.props.changePage} articlesData={this.state.articlesData} />
             </div>
             </div>
          )
@@ -69,11 +66,6 @@ class Articles extends Component {
         this.setState({ sortBy : sortBy})
     }   
 
-    // changePage = (event) => {
-    //     const change = Number.parseInt(event.target.value, 0)
-    //     const newPage = this.state.page + change;
-    //     this.setState( { page : newPage } )
-    // }
 }
 
 export default Articles

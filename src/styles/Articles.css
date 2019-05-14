@@ -6,10 +6,8 @@ ul {
 
 #articlesWrapper {
     text-align: center;
-    /* padding-right:5%; */
-    /* display: flex;
-    justify-content: space-between; */
-
+    padding-bottom: 25px;
+    padding-top:20px;
 }
 
 .articleTitleWrapper {
@@ -104,24 +102,14 @@ ul {
 
 .articleListTitle a {
     font-size: 22px;
-    /* color: #0c5085; */
     color:rgb(61, 61, 61);
     text-decoration: none;
 }
 
 .articleListTitle a:hover {
     font-size: 22px;
-    /* color:  #00243f; */
     color: #0c5085;
     text-decoration: none;
 }
 
-/* 
-@media (max-width: 990px) {
-    .topicGraph {
-        display: none;
-    }
-    .articleListWrapper{
-        margin-left:5px;
-    }
-} */
+
