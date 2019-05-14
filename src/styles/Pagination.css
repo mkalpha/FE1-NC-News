@@ -16,3 +16,15 @@
     font-weight: 900;
     margin: 5px;
 }
+
+@media (max-width: 849px) {
+    #pagination {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    #pagination button {
+        font-size: 18px;
+        font-weight: 900;
+    } 
+}
