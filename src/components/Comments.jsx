@@ -20,8 +20,8 @@ class Comments extends Component {
                     })}
                 </ul>
             </div>}
-            {(this.props.showAddFirstComment !== false && this.props.user !== null ) && <div>This article has no comments, be the first to post...</div>}
-            {(this.props.showAddFirstComment !== false && this.props.user === null ) && <div>This article has no comments, log in or sign up to post...</div>}
+            {(this.props.showAddFirstComment !== false && this.props.user !== null ) && <div className ="noComments">This article has no comments, be the first to post...</div>}
+            {(this.props.showAddFirstComment !== false && this.props.user === null ) && <div className ="noComments">This article has no comments, log in or sign up to post...</div>}
             </div> 
         )  
     }
