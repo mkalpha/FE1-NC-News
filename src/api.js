@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://nc-knews-andrew-workman.herokuapp.com/api'
+const BASE_URL = 'https://ncknews-production.up.railway.app/api'
 
  export const getAllTopics = async () => {
     const { data } = await axios.get(`${BASE_URL}/topics`)
