@@ -41,7 +41,7 @@ class Comments extends Component {
     }
 
     fetchComments = () => {
-        axios.get(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}/comments`)
+        axios.get(`https://ncknews-production.up.railway.app/api/articles/${this.props.article_id}/comments`)
        .then(comments => {
           this.setState({ comments : comments.data})
        })

@@ -64,7 +64,7 @@ class Article extends Component {
         }
         const currentVoteChange = this.state.voteChange +  Number.parseInt(event.target.value, 0)
         this.setState({ voteChange : currentVoteChange })
-        axios.patch(`https://nc-knews-andrew-workman.herokuapp.com/api/articles/${this.props.article_id}`, patchBody)
+        axios.patch(`https://ncknews-production.up.railway.app/api/articles/${this.props.article_id}`, patchBody)
     }
 
     deleteArticle =  (event) => {

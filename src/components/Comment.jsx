@@ -37,7 +37,7 @@ class Comment extends Component {
         }
         const currentVoteChange = this.state.voteChange +  Number.parseInt(event.target.value, 0)
         this.setState({ voteChange : currentVoteChange })
-        axios.patch(`https://nc-knews-andrew-workman.herokuapp.com/api/comments/${this.props.comment.comment_id}`, patchVotesBody)
+        axios.patch(`https://ncknews-production.up.railway.app/api/comments/${this.props.comment.comment_id}`, patchVotesBody)
     }
 
 }
