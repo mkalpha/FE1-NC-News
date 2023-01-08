@@ -38,7 +38,7 @@ class Articles extends Component {
                                 <div className="articleListCreatedAt">Posted on: {article.created_at.slice(0,10)}</div>
                             </div>
                         </li>
-                 }return
+                 }
               })}
             </ul>
             <Pagination page={this.props.page} changePage={this.props.changePage} articlesData={this.state.articlesData} />
